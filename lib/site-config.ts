@@ -55,12 +55,11 @@ export const SOCIAL = {
   facebook: "https://www.facebook.com/ItalGardennola/",
 };
 
-// TODO(James): swap in the real tmt.spotapps.co URLs (with I-tal Garden's
-// spot_id) for each of these — I couldn't reach spotapps.co or
-// italgardennola.com through the network sandbox to pull the real links, so
-// these are placeholders pointing at the SpotHopper root only.
+// TODO(James): `reserve` and `jobs` still point at the SpotHopper root
+// placeholder — swap in the real spot-specific URLs for those when you have
+// them. `order` is live: I-tal Garden's actual SpotHopper ordering menu.
 export const LINKS = {
-  order: "https://tmt.spotapps.co/",
+  order: "https://tmt.spotapps.co/ordering-menu?spot_id=22724&accordion=true&images=yes",
   reserve: "https://tmt.spotapps.co/",
   cateringOrder: "https://tmt.spotapps.co/private-parties",
   jobs: "https://tmt.spotapps.co/",

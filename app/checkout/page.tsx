@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Section, Eyebrow, SectionHeading } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import { useCart } from "@/lib/useCart";
-import { cartSubtotal, clearCart, hasUnpricedLines } from "@/lib/cart";
+import { CartLine, cartSubtotal, clearCart, hasUnpricedLines } from "@/lib/cart";
 import { CONTACT, SITE } from "@/lib/site-config";
 
 const PICKUP_DAYS = ["Wednesday", "Thursday", "Friday"];
@@ -15,6 +15,16 @@ const PICKUP_TIMES = ["11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM",
 function randomOrderNumber() {
   return `IG-${Math.floor(1000 + Math.random() * 9000)}`;
 }
+
+type Confirmation = {
+  orderNumber: string;
+  name: string;
+  day: string;
+  time: string;
+  lines: CartLine[];
+  subtotal: number;
+  unpriced: boolean;
+};
 
 export default function CheckoutPage() {
   const { cart, ready } = useCart();
@@ -25,21 +35,46 @@ export default function CheckoutPage() {
   const [phone, setPhone] = useState("");
   const [day, setDay] = useState(PICKUP_DAYS[0]);
   const [time, setTime] = useState(PICKUP_TIMES[0]);
-  const [confirmed, setConfirmed] = useState<{ orderNumber: string; name: string; day: string; time: string } | null>(null);
+  const [placing, setPlacing] = useState(false);
+  const [confirmed, setConfirmed] = useState<Confirmation | null>(null);
 
-  const canSubmit = name.trim().length > 0 && phone.trim().length > 0 && cart.length > 0;
+  const canSubmit = name.trim().length > 0 && phone.trim().length > 0 && cart.length > 0 && !placing;
 
   const orderNumber = useMemo(() => randomOrderNumber(), []);
 
   function placeOrder() {
     if (!canSubmit) return;
-    setConfirmed({ orderNumber, name, day, time });
-    clearCart();
+    setPlacing(true);
+    const lines = cart;
+    const orderSubtotal = subtotal;
+    const orderUnpriced = unpriced;
+    window.setTimeout(() => {
+      setConfirmed({ orderNumber, name, day, time, lines, subtotal: orderSubtotal, unpriced: orderUnpriced });
+      clearCart();
+      setPlacing(false);
+    }, 1100);
+  }
+
+  if (placing) {
+    return (
+      <Section className="flex min-h-[70vh] flex-col items-center justify-center pt-16 text-center md:pt-20">
+        <Eyebrow>Preview Experience</Eyebrow>
+        <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-gold/40 bg-gold/5">
+          <svg viewBox="0 0 24 24" className="h-7 w-7 animate-spin text-gold" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M12 3a9 9 0 1 0 9 9" strokeLinecap="round" />
+          </svg>
+        </div>
+        <SectionHeading>
+          Placing your <span className="italic text-gold">order</span>&hellip;
+        </SectionHeading>
+        <p className="mx-auto mt-4 max-w-sm font-body text-mist">Sending it back to Chef Ra&rsquo;s kitchen.</p>
+      </Section>
+    );
   }
 
   if (confirmed) {
     return (
-      <Section className="flex min-h-[70vh] flex-col items-center justify-center pt-16 text-center md:pt-20">
+      <Section className="pt-16 text-center md:pt-20">
         <Eyebrow>Preview Experience</Eyebrow>
         <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-gold/40 bg-gold/10">
           <svg viewBox="0 0 24 24" className="h-7 w-7 text-gold" fill="none" stroke="currentColor" strokeWidth="2">
@@ -54,6 +89,36 @@ export default function CheckoutPage() {
           Pickup {confirmed.day}, {confirmed.time} at {CONTACT.addressLine1}. Chef Ra&rsquo;s team will have it
           ready and waiting.
         </p>
+
+        <div className="mx-auto mt-10 max-w-sm rounded-2xl border border-border bg-card p-6 text-left">
+          <p className="mb-4 font-mono text-xs uppercase tracking-widest text-turmeric">Order Summary</p>
+          <ul className="space-y-4">
+            {confirmed.lines.map((line) => (
+              <li key={line.id} className="flex items-center gap-4">
+                <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-lg border border-border bg-dark">
+                  {line.image && <Image src={line.image} alt={line.name} fill sizes="48px" className="object-cover" />}
+                </div>
+                <div className="flex-1">
+                  <p className="font-body text-sm text-cream">{line.name}</p>
+                  <p className="font-mono text-xs text-mist">Qty {line.quantity}</p>
+                </div>
+                <p className="font-mono text-sm text-turmeric">
+                  {line.price !== null ? `$${(line.price * line.quantity).toFixed(2)}` : "TBD"}
+                </p>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-5 flex items-baseline justify-between border-t border-border/60 pt-4 font-body text-sm text-cream">
+            <span>Subtotal</span>
+            <span className="font-mono text-lg text-gold">${confirmed.subtotal.toFixed(2)}</span>
+          </div>
+          {confirmed.unpriced && (
+            <p className="mt-1.5 font-mono text-[11px] text-mist">
+              Some items were priced &ldquo;TBD&rdquo; and aren&rsquo;t counted above.
+            </p>
+          )}
+        </div>
+
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <Button href="/menu" variant="outline">
             Back to Menu

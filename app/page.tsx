@@ -54,8 +54,8 @@ export default function HomePage() {
           </div>
           <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-border">
             <Image
-              src="/images/menu/ra-pasta.jpg"
-              alt="The Ra Pasta, I-tal Garden's signature plate"
+              src="/images/various-topview.jpg"
+              alt="A spread of I-tal Garden's plant-based soul food"
               fill
               priority
               sizes="(min-width: 768px) 50vw, 100vw"
@@ -118,7 +118,7 @@ export default function HomePage() {
         <div className="grid items-center gap-12 md:grid-cols-2">
           <div className="relative aspect-square overflow-hidden rounded-2xl border border-border">
             <Image
-              src="/images/about/interior-2.jpg"
+              src="/images/about/interior-3.jpg"
               alt="Inside I-tal Garden"
               fill
               sizes="(min-width: 768px) 50vw, 100vw"
