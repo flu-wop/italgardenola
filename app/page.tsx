@@ -60,8 +60,8 @@ export default function HomePage() {
           </div>
           <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-border">
             <Image
-              src="/images/menu/ra-pasta.jpg"
-              alt="The Ra Pasta, I-tal Garden's signature plate"
+              src="/images/assorted-topview.jpg"
+              alt="An assortment of I-tal Garden dishes — wings, crabless cakes, and fried greens"
               fill
               priority
               sizes="(min-width: 768px) 50vw, 100vw"
