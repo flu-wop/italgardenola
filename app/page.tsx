@@ -33,6 +33,12 @@ export default function HomePage() {
         <div className="grid items-center gap-12 md:grid-cols-2">
           <div>
             <Eyebrow>New Orleans · Fully Plant-Based</Eyebrow>
+            <div className="mt-3 mb-1 flex items-center gap-2">
+              <span className="flex text-gold" aria-hidden>
+                {"★★★★☆"}
+              </span>
+              <span className="text-sm text-mist">4.3+ · 160+ reviews</span>
+            </div>
             <h1 className="font-display text-5xl font-light leading-[1.05] text-cream md:text-6xl">
               Soul food, made <span className="text-gold-gradient italic">whole</span>.
             </h1>

@@ -22,6 +22,34 @@ const OCCASIONS = [
   "Community Gatherings",
 ];
 
+const PACKAGES = [
+  {
+    name: "Pasta Tray",
+    price: "$350",
+    serves: "Feeds 10–12",
+    includes: "Half pan pasta, half pan protein, half pan side, cornbread, 1 gallon of tea",
+  },
+  {
+    name: "Full Feast Tray",
+    price: "$475",
+    serves: "Feeds 10–12",
+    includes: "Full pan pasta, full pan protein, full pan side, full cornbread tray, 1 gallon of tea",
+  },
+  {
+    name: "Salad Tray",
+    price: "$400",
+    serves: "Feeds 10–12",
+    includes: "Full pan pasta, full pan protein, full pan chef salad (balsamic + ranch)",
+  },
+];
+
+const ADD_ONS = [
+  { name: "Wings", options: "OG, BBQ, Lemon Pepper, Coconut Maple, or Buffalo", price: "$70 half / $125 full" },
+  { name: "Jackfruit-Seitan Ribs", options: "House-made, smoky BBQ sauce", price: "$85 half / $160 full" },
+  { name: "Fried Oyster Mushrooms", options: "Seasoned, battered", price: "$85 half / $160 full" },
+  { name: "Chef Salad", options: "Mixed greens, tomatoes, red onion, cucumber", price: "$45 half / $90 full" },
+];
+
 export default function CateringPage() {
   return (
     <>
@@ -55,6 +83,40 @@ export default function CateringPage() {
             />
           </div>
         </div>
+      </Section>
+
+      <Section className="border-t border-border/60 bg-charcoal/60">
+        <Eyebrow>Packages</Eyebrow>
+        <SectionHeading className="mb-10">
+          Real pricing, <span className="italic text-turmeric">no guessing</span>
+        </SectionHeading>
+        <div className="grid gap-6 md:grid-cols-3">
+          {PACKAGES.map((p) => (
+            <div key={p.name} className="rounded-2xl border border-border p-6">
+              <p className="font-display text-2xl text-cream">{p.price}</p>
+              <p className="mt-1 text-sm uppercase tracking-widest text-gold">{p.name}</p>
+              <p className="mt-1 text-xs text-mist">{p.serves}</p>
+              <p className="mt-4 text-sm leading-relaxed text-mist">{p.includes}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-10">
+          <p className="mb-4 text-xs uppercase tracking-widest text-mist">Add-ons</p>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {ADD_ONS.map((a) => (
+              <div key={a.name} className="flex items-baseline justify-between gap-4 border-b border-border/60 py-2">
+                <div>
+                  <p className="text-sm text-cream">{a.name}</p>
+                  <p className="text-xs text-mist">{a.options}</p>
+                </div>
+                <p className="whitespace-nowrap text-sm text-gold">{a.price}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <p className="mt-6 text-xs text-mist">
+          Chef salad ranch contains nuts — let us know about any allergies when you order.
+        </p>
       </Section>
 
       <Section className="border-t border-border/60 bg-charcoal/60">

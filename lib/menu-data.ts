@@ -9,12 +9,14 @@
 // (not the original scraped text) — names are our best read of the dish,
 // worth confirming against the real menu.
 //
-// Pricing: only 4 prices could be confirmed (matched exactly against an
-// aggregator listing's description text) — Ra Pasta, I-tal Plate, Jackfruit
-// Ribs, Crabless Crab Cakes. Everything else is `price: null` ("TBD" in the
-// UI) rather than a guessed number — other aggregator figures we found
-// contradicted each other, so nothing unverified made it in. Replace with
-// real numbers from a SpotHopper screenshot when available.
+// Pricing: confirmed against a live Yelp menu listing (July 2026) for Ra
+// Pasta, I-tal Plate, Mac Plate, I-tal Veggie Burger Meal, Rodeo Burger
+// Meal, Lemon Pepper Oyster Mushroom Wrap, Hell Yeah Kale Salad, Crabless-
+// Cake Garden Salad, Avocado Toast with Side Salad, Oyster Mushroom Bites,
+// and Crabless Crab Cakes. Everything else is `price: null` ("TBD" in the
+// UI) rather than a guessed number. Replace with real numbers from a
+// SpotHopper screenshot when available — this is prices confirmed as of
+// Aug 2026, not necessarily current.
 
 export type MenuItem = {
   id: string;
@@ -76,7 +78,31 @@ export const MENU: MenuSection[] = [
         name: "I-tal Plate",
         description: "Coconut curry black-eyed peas served the ital way — whole, seasoned, and slow-simmered.",
         image: "/images/menu/ital-plate.jpg",
-        price: 10,
+        price: 14,
+      },
+      {
+        id: "mac-plate",
+        name: "Mac Plate",
+        description: "The vegan mac and cheese, served as a full plate.",
+        price: 16,
+      },
+      {
+        id: "veggie-burger-meal",
+        name: "I-tal Veggie Burger Meal",
+        description: "Plant-based burger served as a full meal.",
+        price: 14.5,
+      },
+      {
+        id: "rodeo-burger-meal",
+        name: "Rodeo Burger Meal",
+        description: "Chef Ra's rodeo-style burger, served as a full meal.",
+        price: 16,
+      },
+      {
+        id: "oyster-mushroom-wrap",
+        name: "Lemon Pepper Oyster Mushroom Wrap",
+        description: "Crispy oyster mushrooms, lemon pepper seasoned, wrapped up.",
+        price: 13.5,
       },
     ],
   },
@@ -86,10 +112,10 @@ export const MENU: MenuSection[] = [
     items: [
       {
         id: "kale-salad",
-        name: "Kale Salad",
+        name: "Hell Yeah Kale Salad",
         description: "Kale, quinoa, cucumber, tomato, avocado, and sprouts, topped with crispy fried oyster mushrooms.",
         image: "/images/menu/kale-salad.jpg",
-        price: null,
+        price: 14,
       },
       {
         id: "ital-salad",
@@ -97,6 +123,18 @@ export const MENU: MenuSection[] = [
         description: "Mixed greens, quinoa, avocado, cucumber, tomato, and sprouts, dressed light.",
         image: "/images/menu/ital-salad.jpg",
         price: null,
+      },
+      {
+        id: "crabless-cake-salad",
+        name: "Crabless-Cake Garden Salad",
+        description: "Garden salad topped with our crabless crab cakes.",
+        price: 14,
+      },
+      {
+        id: "avocado-toast",
+        name: "Avocado Toast with Side Salad",
+        description: "Avocado toast paired with a side salad.",
+        price: 10,
       },
     ],
   },
@@ -136,7 +174,7 @@ export const MENU: MenuSection[] = [
         id: "oyster-bites",
         name: "Oyster Mushroom Bites",
         description: "Crispy-fried oyster mushrooms, a Chef Ra signature texture play.",
-        price: null,
+        price: 9.5,
       },
     ],
   },
