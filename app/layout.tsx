@@ -6,6 +6,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${SITE.domain}`),
+  robots: { index: false, follow: false }, // demo: remove at launch
   title: {
     default: `${SITE.name} — ${SITE.tagline}`,
     template: `%s — ${SITE.name}`,
