@@ -68,6 +68,10 @@ export function Footer() {
           <p className="font-mono text-xs text-mist">
             © {new Date().getFullYear()} I-tal Garden. All rights reserved.
           </p>
+          <p className="font-mono text-xs text-mist">
+            Designed by{" "}
+            <a href="https://in-flu-ential.vercel.app" target="_blank" rel="noopener noreferrer" className="text-gold transition hover:opacity-80">IN-FLU-ENTIAL</a>
+          </p>
         </div>
       </div>
     </footer>

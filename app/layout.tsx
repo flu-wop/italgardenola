@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { PreviewBadge } from "@/components/layout/PreviewBadge";
 import { CONTACT, HOURS_SCHEMA, SITE } from "@/lib/site-config";
 import "./globals.css";
 
@@ -65,7 +64,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Footer />
-        <PreviewBadge />
       </body>
     </html>
   );
