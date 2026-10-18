@@ -6,61 +6,69 @@ import Link from "next/link";
 import { Section, Eyebrow, SectionHeading } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import { useCart } from "@/lib/useCart";
-import { cartSubtotal, clearCart, lineTotal, setQuantity, type CartLine } from "@/lib/cart";
+import { cartSubtotal, clearCart, lineTotal, setQuantity } from "@/lib/cart";
 import { money } from "@/lib/pricing";
-import { HOURS, LINKS, SITE } from "@/lib/site-config";
-
-// Pickup days/times are derived from HOURS in site-config (itself marked CONFIRM).
-function slots() {
-  const days = HOURS.filter((h) => /\d/.test(h.hours));
-  const parse = (t: string) => {
-    const m = t.match(/(\d+):(\d+)\s*(AM|PM)/i);
-    if (!m) return 0;
-    return ((Number(m[1]) % 12) + (m[3].toUpperCase() === "PM" ? 12 : 0)) * 60 + Number(m[2]);
-  };
-  const fmt = (min: number) => `${((Math.floor(min / 60) + 11) % 12) + 1}:${String(min % 60).padStart(2, "0")} ${min >= 720 ? "PM" : "AM"}`;
-  return days.map((d) => {
-    const [open, close] = d.hours.split(/[–-]/).map(parse);
-    const times: string[] = [];
-    for (let t = open; t < close; t += 30) times.push(fmt(t));
-    return { day: d.day, times };
-  });
-}
+import { pickupSlots } from "@/lib/pickup";
+import { submitOrder, type OrderConfirmation } from "@/lib/orders";
+import { CONTACT } from "@/lib/site-config";
 
 const field = "w-full rounded-xl border-2 border-espresso/15 bg-white px-4 py-3 text-sm focus:border-leaf-deep focus:outline-none";
 const label = "mb-1.5 block text-xs font-bold uppercase tracking-widest text-bark";
 
 export default function CheckoutPage() {
   const { cart, ready } = useCart();
-  const pickup = useMemo(() => slots(), []);
+  const pickup = useMemo(() => pickupSlots(), []);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [day, setDay] = useState(pickup[0]?.day ?? "");
   const [time, setTime] = useState(pickup[0]?.times[0] ?? "");
-  const [done, setDone] = useState<{ lines: CartLine[]; name: string; day: string; time: string } | null>(null);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+  const [done, setDone] = useState<(OrderConfirmation & { name: string }) | null>(null);
 
   const times = pickup.find((p) => p.day === day)?.times ?? [];
-  const canSubmit = name.trim() && phone.trim() && cart.length > 0;
+  const canSubmit = name.trim() && phone.trim() && cart.length > 0 && !busy;
+
+  async function place(e: React.FormEvent) {
+    e.preventDefault();
+    if (!canSubmit) return;
+    setBusy(true);
+    setError("");
+    try {
+      // Server validates + re-prices; a short pause stands in for payment processing.
+      const [confirmation] = await Promise.all([submitOrder({ lines: cart, name, phone, day, time }), new Promise((r) => setTimeout(r, 1100))]);
+      setDone({ ...confirmation, name });
+      clearCart();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong.");
+    } finally {
+      setBusy(false);
+    }
+  }
 
   if (done) {
     return (
       <Section className="flex min-h-[70vh] flex-col items-center justify-center pt-16 text-center md:pt-20">
-        <Eyebrow>Preview confirmation</Eyebrow>
+        <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-leaf-deep text-white">
+          <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
+            <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+        <Eyebrow>Demo confirmation</Eyebrow>
         <SectionHeading>
-          This was a <span className="script text-leaf">preview</span>
+          Thanks, <span className="script text-leaf">{done.name.split(" ")[0]}</span>
         </SectionHeading>
-        <p role="status" className="mx-auto mt-6 max-w-md rounded-2xl bg-sun/30 px-5 py-4 text-base font-bold leading-relaxed text-espresso">
-          No order was sent and no payment was taken. The kitchen has not received anything.
+        <p className="mt-4 text-lg font-bold text-leaf-deep">Order #{done.orderNumber}</p>
+        <p className="mx-auto mt-3 max-w-md text-ink/85">
+          {done.itemCount} item{done.itemCount === 1 ? "" : "s"} · {money(done.totalCents / 100)} · pickup {done.pickup} at {CONTACT.addressLine1}.
         </p>
-        <p className="mx-auto mt-5 max-w-md text-ink/85">
-          Thanks, {done.name.split(" ")[0]}. Here is what you built: {done.lines.reduce((n, l) => n + l.quantity, 0)} item(s), {money(cartSubtotal(done.lines))}, for {done.day} at {done.time}. To place a real order, continue on Toast.
+        <p role="status" className="mx-auto mt-6 max-w-md rounded-2xl bg-sun/30 px-5 py-4 text-sm font-bold leading-relaxed text-espresso">
+          This is a demo of the ordering flow. No payment was taken and no order was sent to the kitchen.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <Button href={LINKS.order} external>
-            Order on Toast
-          </Button>
-          <Button href="/menu" variant="outline">
-            Back to menu
+          <Button href="/menu">Order something else</Button>
+          <Button href="/" variant="outline">
+            Home
           </Button>
         </div>
       </Section>
@@ -69,19 +77,16 @@ export default function CheckoutPage() {
 
   return (
     <Section className="pt-14 md:pt-20">
-      <Eyebrow>Preview experience</Eyebrow>
+      <Eyebrow>Checkout</Eyebrow>
       <SectionHeading>
         Your <span className="script text-leaf">order</span>
       </SectionHeading>
-      <p className="mt-4 max-w-xl rounded-2xl bg-sun/30 px-5 py-3 text-sm leading-relaxed text-espresso">
-        This page previews the ordering flow for {SITE.name}. Nothing here is sent to the kitchen and no payment is collected. Real orders are placed on Toast.
-      </p>
 
       <div className="mt-10 grid gap-10 md:grid-cols-[1.2fr_1fr]">
         <div>
           {!ready ? null : cart.length === 0 ? (
             <p className="text-ink/85">
-              Your preview order is empty.{" "}
+              Your order is empty.{" "}
               <Link href="/menu" className="font-bold text-leaf-deep underline-offset-4 hover:underline">
                 Browse the menu
               </Link>
@@ -113,22 +118,14 @@ export default function CheckoutPage() {
           )}
           {cart.length > 0 && (
             <div className="mt-6 flex items-baseline justify-between text-base">
-              <span>Subtotal (preview)</span>
+              <span>Subtotal</span>
               <span className="text-2xl font-bold text-espresso">{money(cartSubtotal(cart))}</span>
             </div>
           )}
         </div>
 
         {cart.length > 0 && (
-          <form
-            className="h-fit rounded-3xl bg-white p-6 shadow-soft"
-            onSubmit={(e) => {
-              e.preventDefault();
-              if (!canSubmit) return;
-              setDone({ lines: cart, name, day, time });
-              clearCart();
-            }}
-          >
+          <form className="h-fit rounded-3xl bg-white p-6 shadow-soft" onSubmit={place}>
             <p className="mb-5 font-display text-xl font-bold text-espresso">Pickup details</p>
             <div className="space-y-4">
               <label className="block">
@@ -165,13 +162,16 @@ export default function CheckoutPage() {
                 </label>
               </div>
             </div>
-            <button type="submit" disabled={!canSubmit} className="mt-6 w-full rounded-full bg-sand px-6 py-3.5 text-[15px] font-bold text-espresso transition-colors enabled:hover:bg-sage disabled:cursor-not-allowed disabled:opacity-50">
-              See preview confirmation
+
+            {error && (
+              <p role="alert" className="mt-4 text-sm font-bold text-danger">
+                {error}
+              </p>
+            )}
+            <button type="submit" disabled={!canSubmit} className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-leaf-deep px-6 py-3.5 text-[15px] font-bold text-white transition-colors enabled:hover:bg-leaf disabled:cursor-not-allowed disabled:opacity-60">
+              {busy ? "Processing…" : `Pay ${money(cartSubtotal(cart))} (demo)`}
             </button>
-            <a href={LINKS.order} target="_blank" rel="noopener noreferrer" className="mt-3 block w-full rounded-full bg-leaf-deep px-6 py-3.5 text-center text-[15px] font-bold text-white transition-colors hover:bg-leaf">
-              Place your real order on Toast
-            </a>
-            <p className="mt-3 text-center text-xs text-ink/75">Preview only: nothing is sent and no payment is collected here.</p>
+            <p className="mt-3 text-center text-xs text-ink/75">Demo checkout: no card is collected, no payment is taken, and nothing is sent to the kitchen.</p>
           </form>
         )}
       </div>

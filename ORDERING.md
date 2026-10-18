@@ -1,27 +1,29 @@
-# Ordering: what is real and what is not
+# Ordering
 
-**Today:** "Order Online", the cart's "Order on Toast" button and the checkout page's final button all open
-`LINKS.order` (`lib/site-config.ts`) in a new tab. The on-site cart and `/checkout` are a labeled
-**preview** of the modifier flow. Nothing is sent, no payment is taken, and `submitOrder()` in `lib/orders.ts`
-throws `"submitOrder: not wired"`.
+**Today (prospect demo):** the whole flow is built in. Menu → item modal (size, modifiers, notes) → cart →
+`/checkout` → `POST /api/orders` → confirmation screen.
 
-Open items: the Toast URL itself is unverified (see `CONFIRM` in `site-config.ts`), and the modifier rules in
-`lib/menu-data.ts` are placeholders until read from Toast.
+- `/api/orders` validates the payload and **re-prices every line on the server** from `lib/menu-data.ts`
+  (`lib/order-server.ts`), then returns a **mock** confirmation with an order number.
+- **No payment is taken, nothing is stored, no email or kitchen ticket is sent.** The checkout button reads
+  "Pay $X (demo)", collects no card details, and the confirmation says so.
+- "Order Online" everywhere points at the on-site `/menu`.
+- `LINKS.order` (a Toast URL inferred from the gift card link, unverified) and `LINKS.giftCards` stay in
+  `lib/site-config.ts`. Gift cards link out to the client's Toast gift card page.
+- Reserve, Jobs and the catering request form keep the client's current SpotHopper links, as on their live site.
 
-## Route A: Toast partner API
+Open items before this can take real orders: modifier rules in `lib/menu-data.ts` are placeholders
+(Toast was unreachable), pickup slots derive from hours that are still marked `CONFIRM`, and sales tax is not handled.
 
-Toast's ordering APIs are partner-gated. Needs: an approved Toast integration partnership (or the restaurant
-granting API credentials through Toast), the restaurant GUID, then Menus API → sync `lib/menu-data.ts` (real
-modifier groups and prices), Orders API → create the order, and a payment path that Toast allows for
-third-party front ends. Replace `submitOrder` with a server route that calls the Orders API. Benefit: orders land
-in the kitchen's existing Toast flow. Cost: partner approval and review.
+## Making it real (when the deal closes)
 
-## Route B: Stripe Checkout + kitchen ticket by email
+Keep `priceOrder()` and `/api/orders`; replace the mock response.
 
-Needs: the client's Stripe account, a server route that re-prices the cart **on the server** from
-`lib/menu-data.ts` with `priceLine()` (never trust client prices), creates a Stripe Checkout Session, and on the
-`checkout.session.completed` webhook emails the kitchen a ticket (items, options, notes, pickup time) and
-the customer a receipt. Needs a decision on tax, fees, sold-out handling and who watches the ticket inbox. Orders would
-bypass Toast, so the kitchen has two systems to watch.
+**A. Toast partner API.** Needs Toast integration approval or credentials from the restaurant, then Menus API to
+sync real modifiers/prices, Orders API to create the order, and a Toast-approved payment path. Orders land in the
+kitchen's existing flow.
 
-Neither route is implemented here.
+**B. Stripe Checkout + kitchen ticket.** Needs the client's Stripe account. In `/api/orders` create a Checkout
+Session from the server-priced lines and return its URL; on the `checkout.session.completed` webhook, email the
+kitchen a ticket (items, options, notes, pickup time). Needs decisions on tax, fees and who watches the ticket inbox.
+The kitchen would then have two systems to watch.

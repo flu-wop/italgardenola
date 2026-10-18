@@ -76,8 +76,8 @@ export default function HomePage() {
                 <Badge variant="sun">I-tal Meal Prep</Badge>
                 <h3 className="mt-4 font-display text-2xl font-bold text-espresso">100% plant-based meals</h3>
                 <p className="mt-3 flex-1 text-sm leading-relaxed text-ink/80">Organic, responsibly sourced ingredients. No fried foods, no added sugars, no seed oils. Compostable packaging.</p>
-                <Button href={LINKS.mealPrep} external variant="outline" className="mt-6 self-start">
-                  Meal prep orders
+                <Button href="/meal-prep" variant="outline" className="mt-6 self-start">
+                  About Meal Prep
                 </Button>
               </CardContent>
             </Card>

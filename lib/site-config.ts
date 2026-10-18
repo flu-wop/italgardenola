@@ -67,17 +67,23 @@ export const LINKS = {
   order: "https://order.toasttab.com/online/i-tal-garden-810-n-claiborne-ave",
   // Existing Toast gift card page, taken verbatim from italgardennola.com.
   giftCards: "https://order.toasttab.com/egiftcards/i-tal-garden-810-n-claiborne-ave",
+  // The client's own current links, copied verbatim from italgardennola.com
+  // (SpotHopper). Kept on purpose: Reserve, Jobs and catering requests have no
+  // Toast equivalent yet.
+  reserve: "https://tmt.spotapps.co/reservations?spot_id=100582&callback_url=http://italgardennola.com/",
+  jobs: "https://tmt.spotapps.co/job-listings?spot_id=100582&callback_url=http://italgardennola.com/",
+  cateringOrder: "https://tmt.spotapps.co/catering?spot_id=100582&callback_url=http://italgardennola.com/",
   // Meal prep is a separate site run by the client.
   mealPrep: "https://italmealprep.com/",
 };
 
 export const NAV_LINKS: { href: string; label: string; external?: boolean }[] = [
-  { href: "/", label: "Home" },
   { href: "/menu", label: "Menu" },
   { href: "/catering", label: "Catering" },
   { href: "/events", label: "Events" },
-  // The client's own site links out to their separate meal prep site; no page here.
-  { href: LINKS.mealPrep, label: "Meal Prep", external: true },
+  { href: "/meal-prep", label: "Meal Prep" },
+  { href: LINKS.reserve, label: "Reserve", external: true },
+  { href: LINKS.jobs, label: "Jobs", external: true },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];

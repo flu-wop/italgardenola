@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Eyebrow, Section } from "@/components/ui/Section";
 import { Headline, Reveal } from "@/components/motion/motion";
 import { Button } from "@/components/ui/Button";
-import { LINKS, SITE } from "@/lib/site-config";
+import { SITE } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "About",
@@ -51,15 +51,10 @@ export default function AboutPage() {
             <Image src="/images/about/interior-3.jpg" alt="Inside I-tal Garden" fill loading="lazy" sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
           </div>
           <div>
-            <Eyebrow>Come hungry</Eyebrow>
-            <Headline text="Order on *Toast.*" className="text-4xl font-bold text-espresso md:text-5xl" />
+            <Eyebrow>Order ahead</Eyebrow>
+            <Headline text="Come *hungry.*" className="text-4xl font-bold text-espresso md:text-5xl" />
             <div className="mt-8 flex flex-wrap gap-4">
-              <Button href={LINKS.order} external>
-                Order Online
-              </Button>
-              <Button href="/menu" variant="outline">
-                View menu
-              </Button>
+              <Button href="/menu">Order Online</Button>
             </div>
           </div>
         </div>

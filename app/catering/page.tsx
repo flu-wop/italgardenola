@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Eyebrow } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import { MenuBrowser } from "@/components/menu/MenuBrowser";
-import { CONTACT, SITE } from "@/lib/site-config";
+import { CONTACT, LINKS, SITE } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Catering",
@@ -27,12 +27,11 @@ export default function CateringPage() {
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Button href={CONTACT.phoneHref}>Call {CONTACT.phone}</Button>
-              <Button href={`mailto:${CONTACT.email}`} variant="outline">
-                Email us
+              <Button href={LINKS.cateringOrder} external variant="outline">
+                Start a catering order
               </Button>
             </div>
-            {/* CONFIRM: the client's catering order form was on SpotHopper; there is no Toast catering URL yet. */}
-            <p className="mt-4 max-w-md text-sm text-ink/75">Browse the catering menu below. Tap an item to see its options. The on-site order is a preview only: to book, call or email.</p>
+            <p className="mt-4 max-w-md text-sm text-ink/75">Browse the catering menu below. Tap an item to see its options. To book, use the catering form above or call us.</p>
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] shadow-lift">
             <Image src="/images/catering-spread.jpg" alt="I-tal Garden catering spread" fill priority sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />

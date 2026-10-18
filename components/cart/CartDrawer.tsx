@@ -6,7 +6,6 @@ import Image from "next/image";
 import { useCart } from "@/lib/useCart";
 import { OPEN_CART_EVENT, cartCount, cartSubtotal, lineTotal, removeFromCart, setQuantity } from "@/lib/cart";
 import { money } from "@/lib/pricing";
-import { LINKS } from "@/lib/site-config";
 import { Modal } from "@/components/ui/Modal";
 
 export function CartDrawer() {
@@ -22,7 +21,7 @@ export function CartDrawer() {
 
   return (
     <>
-      <button aria-label={`Open preview order${count ? `, ${count} items` : ""}`} onClick={() => setOpen(true)} className="relative flex h-11 w-11 items-center justify-center rounded-full text-espresso transition-colors hover:text-leaf">
+      <button aria-label={`Open order${count ? `, ${count} items` : ""}`} onClick={() => setOpen(true)} className="relative flex h-11 w-11 items-center justify-center rounded-full text-espresso transition-colors hover:text-leaf">
         <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden>
           <circle cx="9" cy="20" r="1.4" />
           <circle cx="18" cy="20" r="1.4" />
@@ -31,11 +30,11 @@ export function CartDrawer() {
         {count > 0 && <span className="absolute right-0 top-0 flex h-5 min-w-5 items-center justify-center rounded-full bg-sun px-1 text-[11px] font-bold text-espresso">{count}</span>}
       </button>
 
-      <Modal open={open} onClose={() => setOpen(false)} label="Your preview order" className="fixed inset-0 h-full w-full">
+      <Modal open={open} onClose={() => setOpen(false)} label="Your order" className="fixed inset-0 h-full w-full">
         <div className="flex h-full justify-end">
           <div className="flex h-full w-full max-w-md flex-col bg-paper shadow-lift">
             <div className="flex items-center justify-between border-b border-espresso/10 px-6 py-5">
-              <p className="font-display text-2xl font-bold text-espresso">Preview order</p>
+              <p className="font-display text-2xl font-bold text-espresso">Your order</p>
               <button onClick={() => setOpen(false)} aria-label="Close" className="flex h-11 w-11 items-center justify-center rounded-full text-xl hover:bg-sand">
                 ✕
               </button>
@@ -43,10 +42,10 @@ export function CartDrawer() {
 
             <div className="flex-1 overflow-y-auto px-6 py-5" data-lenis-prevent>
               <p className="mb-5 rounded-xl bg-sun/25 px-4 py-3 text-xs leading-relaxed text-espresso">
-                This cart is a preview of the ordering flow. Nothing here is sent to the kitchen and no payment is taken. Place your real order on Toast.
+                Demo: checkout takes no payment and nothing is sent to the kitchen.
               </p>
               {cart.length === 0 ? (
-                <p className="mt-10 text-center text-sm text-ink/75">Your preview order is empty.</p>
+                <p className="mt-10 text-center text-sm text-ink/75">Your order is empty.</p>
               ) : (
                 <ul className="space-y-6">
                   {cart.map((line) => (
@@ -83,14 +82,11 @@ export function CartDrawer() {
             {cart.length > 0 && (
               <div className="space-y-3 border-t border-espresso/10 px-6 py-5">
                 <div className="flex items-baseline justify-between text-sm">
-                  <span>Subtotal (preview)</span>
+                  <span>Subtotal</span>
                   <span className="text-lg font-bold text-espresso">{money(cartSubtotal(cart))}</span>
                 </div>
-                <a href={LINKS.order} target="_blank" rel="noopener noreferrer" className="block rounded-full bg-leaf-deep px-6 py-3.5 text-center text-[15px] font-bold text-white transition-colors hover:bg-leaf">
-                  Order on Toast
-                </a>
-                <Link href="/checkout" onClick={() => setOpen(false)} className="block text-center text-sm font-bold text-leaf-deep underline-offset-4 hover:underline">
-                  See the on-site preview
+                <Link href="/checkout" onClick={() => setOpen(false)} className="block rounded-full bg-leaf-deep px-6 py-3.5 text-center text-[15px] font-bold text-white transition-colors hover:bg-leaf">
+                  Checkout
                 </Link>
               </div>
             )}

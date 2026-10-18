@@ -7,7 +7,7 @@ import { ItemConfigurator } from "@/components/menu/ItemConfigurator";
 import { Button } from "@/components/ui/Button";
 import { addToCart, openCart } from "@/lib/cart";
 import { findItem } from "@/lib/menu-data";
-import { LINKS } from "@/lib/site-config";
+import Link from "next/link";
 
 const SAMPLE = findItem("lemon-pepper-wrap-meal")!;
 
@@ -21,13 +21,13 @@ export default function OrderVignette() {
         <Headline text="Make it *yours*, then order." className="mt-3 text-[2.4rem] font-bold leading-[1.05] text-espresso md:text-6xl" />
         <Reveal delay={0.1}>
           <p className="mt-5 max-w-md text-lg leading-relaxed text-ink/85">
-            Pick a size, choose your options, add a note for the kitchen. Try it on the dish at right. The on-site cart is a preview; when you&rsquo;re ready, ordering happens on Toast.
+            Pick a size, choose your options, add a note for the kitchen. Try it on the dish at right, then check out in a few taps.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Magnetic>
-              <a href={LINKS.order} target="_blank" rel="noopener noreferrer" className="inline-flex rounded-full bg-leaf-deep px-8 py-4 text-[15px] font-bold tracking-wide text-white shadow-lift transition-colors hover:bg-leaf">
+              <Link href="/menu" className="inline-flex rounded-full bg-leaf-deep px-8 py-4 text-[15px] font-bold tracking-wide text-white shadow-lift transition-colors hover:bg-leaf">
                 Order Online
-              </a>
+              </Link>
             </Magnetic>
             <Button href="/menu" variant="outline">
               Browse the menu
@@ -45,7 +45,7 @@ export default function OrderVignette() {
           transition={{ duration: 0.9, ease: [0.2, 0.7, 0.2, 1] }}
           className="overflow-hidden rounded-[2rem] bg-paper shadow-lift"
         >
-          <p className="bg-espresso px-6 py-2 text-center text-[11px] font-bold uppercase tracking-[0.22em] text-sun">Preview · nothing is sent</p>
+          <p className="bg-espresso px-6 py-2 text-center text-[11px] font-bold uppercase tracking-[0.22em] text-sun">Demo · nothing is sent</p>
           <div className="p-6">
             <div className="flex items-start gap-4">
               {SAMPLE.image ? <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl"><Image src={SAMPLE.image} alt="" fill sizes="80px" className="object-cover" /></div> : null}
@@ -57,7 +57,7 @@ export default function OrderVignette() {
             <div className="mt-6">
               <ItemConfigurator
                 item={SAMPLE}
-                addLabel="Add to preview"
+                addLabel="Add to order"
                 onAdd={(sel, qty) => {
                   addToCart(SAMPLE, sel, qty);
                   openCart();

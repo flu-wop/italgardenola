@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Eyebrow, Section } from "@/components/ui/Section";
 import { Headline } from "@/components/motion/motion";
 import { Button } from "@/components/ui/Button";
-import { CONTACT, SITE, SOCIAL } from "@/lib/site-config";
+import { CONTACT, LINKS, SITE, SOCIAL } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Events",
@@ -25,8 +25,8 @@ export default function EventsPage() {
             <p className="mt-6 max-w-md text-lg leading-relaxed text-ink/85">Need a place to host your event? We have the perfect space to host your next event, and the perfect venue for your holiday party.</p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Button href={CONTACT.phoneHref}>Call to inquire · {CONTACT.phone}</Button>
-              <Button href="/catering" variant="outline">
-                Catering menu
+              <Button href={LINKS.reserve} external variant="outline">
+                Reserve
               </Button>
             </div>
             <p className="mt-4 max-w-md text-sm text-ink/75">

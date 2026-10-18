@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Eyebrow, Section, SectionHeading } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
-import { CONTACT, HOURS, SITE, SOCIAL } from "@/lib/site-config";
+import { CONTACT, HOURS, LINKS, SITE, SOCIAL } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Contact & Location",
@@ -76,6 +76,24 @@ export default function ContactPage() {
               </ul>
             </div>
 
+
+            <div>
+              <p className="eyebrow mb-3">Reserve</p>
+              <p className="max-w-sm text-sm leading-relaxed text-ink/80">Book a table or a party through our reservations page.</p>
+              <Button href={LINKS.reserve} external variant="outline" className="mt-4">
+                Reserve
+              </Button>
+            </div>
+
+            <div>
+              <p className="eyebrow mb-3">Join the Team</p>
+              <p className="max-w-sm text-sm leading-relaxed text-ink/80">
+                I-tal Garden is always open to hearing from people who want to cook. See current openings on our ordering partner&rsquo;s site.
+              </p>
+              <Button href={LINKS.jobs} external variant="outline" className="mt-4">
+                View Openings
+              </Button>
+            </div>
           </div>
 
           <div className="overflow-hidden rounded-2xl border border-espresso/15">

@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { NAV_LINKS, LINKS } from "@/lib/site-config";
+import { NAV_LINKS } from "@/lib/site-config";
 import { CartDrawer } from "@/components/cart/CartDrawer";
 import { Magnetic } from "@/components/motion/motion";
 import { cn } from "@/lib/cn";
@@ -31,10 +31,10 @@ export function Navbar() {
           <span className="hidden font-display text-xl font-bold tracking-wide text-espresso sm:inline">I-tal Garden</span>
         </Link>
 
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Main">
+        <nav className="hidden items-center gap-5 xl:gap-7 lg:flex" aria-label="Main">
           {NAV_LINKS.map((link) => {
             const active = !link.external && (link.href === "/" ? pathname === "/" : pathname.startsWith(link.href));
-            const cls = cn("relative py-1 text-sm font-bold uppercase tracking-wider transition-colors", active ? "text-leaf" : "text-espresso/80 hover:text-leaf");
+            const cls = cn("relative py-1 text-[13px] font-bold uppercase tracking-wider transition-colors xl:text-sm", active ? "text-leaf" : "text-espresso/80 hover:text-leaf");
             if (link.external)
               return (
                 <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className={cls}>
@@ -58,9 +58,9 @@ export function Navbar() {
         <div className="flex items-center gap-2">
           <div className="hidden lg:block">
             <Magnetic strength={0.2}>
-              <a href={LINKS.order} target="_blank" rel="noopener noreferrer" className="inline-flex rounded-full bg-leaf-deep px-6 py-2.5 text-sm font-bold tracking-wide text-white transition-colors hover:bg-leaf">
+              <Link href="/menu" className="inline-flex rounded-full bg-leaf-deep px-6 py-2.5 text-sm font-bold tracking-wide text-white transition-colors hover:bg-leaf">
                 Order Online
-              </a>
+              </Link>
             </Magnetic>
           </div>
           <CartDrawer />
@@ -85,9 +85,9 @@ export function Navbar() {
               </Link>
             )
           )}
-          <a href={LINKS.order} target="_blank" rel="noopener noreferrer" className="mt-2 rounded-full bg-leaf-deep px-5 py-3.5 text-center text-base font-bold text-white">
+          <Link href="/menu" className="mt-2 rounded-full bg-leaf-deep px-5 py-3.5 text-center text-base font-bold text-white">
             Order Online
-          </a>
+          </Link>
         </nav>
       )}
     </header>

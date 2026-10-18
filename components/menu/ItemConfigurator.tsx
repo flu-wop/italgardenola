@@ -117,7 +117,7 @@ export function ItemConfigurator({
 
       {hasPlaceholder && (
         <p className="rounded-xl bg-sun/25 px-4 py-3 text-xs leading-relaxed text-espresso">
-          Preview: these choices are listed from the public menu. The kitchen&rsquo;s ordering system has the final options and rules.
+          Demo: these options are listed from the public menu. The kitchen confirms the final choices and rules before this goes live.
         </p>
       )}
 

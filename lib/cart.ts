@@ -1,5 +1,5 @@
-// Preview cart persisted in localStorage. It never submits anywhere; the real
-// handoff is LINKS.order (Toast). Pure logic lives in cart-core.ts.
+// Demo cart persisted in localStorage. Checkout posts to the demo /api/orders
+// route (mock success, no payment). Pure logic lives in cart-core.ts.
 import type { MenuItem } from "./menu-data";
 import type { Selection } from "./pricing";
 import { addLine, setLineQuantity, type CartLine } from "./cart-core";

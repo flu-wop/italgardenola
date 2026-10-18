@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from "framer-motion";
 import { Headline, Magnetic } from "@/components/motion/motion";
-import { LINKS } from "@/lib/site-config";
 import { cn } from "@/lib/cn";
 
 type CardSpec = { src: string; alt: string; className: string; speed: number; rotate: number; round?: boolean; delay: number };
@@ -63,17 +62,17 @@ export default function Hero() {
           <motion.div initial={reduce ? false : { opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.95, duration: 0.8 }} className="mt-8">
             <div className="flex flex-wrap justify-center gap-3 md:justify-start">
               <Magnetic>
-                <a href={LINKS.order} target="_blank" rel="noopener noreferrer" className="inline-flex rounded-full bg-leaf-deep px-8 py-4 text-[15px] font-bold tracking-wide text-white shadow-lift transition-colors hover:bg-leaf">
+                <Link href="/menu" className="inline-flex rounded-full bg-leaf-deep px-8 py-4 text-[15px] font-bold tracking-wide text-white shadow-lift transition-colors hover:bg-leaf">
                   Order Online
-                </a>
+                </Link>
               </Magnetic>
               <Magnetic>
-                <Link href="/menu" className="inline-flex rounded-full border-2 border-espresso/25 bg-paper/70 px-7 py-[14px] text-[15px] font-bold tracking-wide text-espresso backdrop-blur transition-colors hover:border-leaf-deep">
-                  View Menu
+                <Link href="/catering" className="inline-flex rounded-full border-2 border-espresso/25 bg-paper/70 px-7 py-[14px] text-[15px] font-bold tracking-wide text-espresso backdrop-blur transition-colors hover:border-leaf-deep">
+                  Catering
                 </Link>
               </Magnetic>
             </div>
-            <p className="mt-3 text-sm text-ink/75">Online ordering opens on Toast in a new tab.</p>
+            <p className="mt-3 text-sm text-ink/75">Build your order online, no account needed.</p>
           </motion.div>
         </motion.div>
 
