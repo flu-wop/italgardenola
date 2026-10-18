@@ -33,13 +33,20 @@ export function Navbar() {
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Main">
           {NAV_LINKS.map((link) => {
-            const active = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
+            const active = !link.external && (link.href === "/" ? pathname === "/" : pathname.startsWith(link.href));
+            const cls = cn("relative py-1 text-sm font-bold uppercase tracking-wider transition-colors", active ? "text-leaf" : "text-espresso/80 hover:text-leaf");
+            if (link.external)
+              return (
+                <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className={cls}>
+                  {link.label}
+                </a>
+              );
             return (
               <Link
                 key={link.href}
                 href={link.href}
                 aria-current={active ? "page" : undefined}
-                className={cn("relative py-1 text-sm font-bold uppercase tracking-wider transition-colors", active ? "text-leaf" : "text-espresso/80 hover:text-leaf")}
+                className={cls}
               >
                 {link.label}
                 {active && <span className="absolute -bottom-0.5 left-0 h-0.5 w-full rounded bg-sun" />}
@@ -67,11 +74,17 @@ export function Navbar() {
 
       {open && (
         <nav className="flex flex-col gap-1 border-t border-espresso/10 px-5 pb-6 pt-2 lg:hidden" aria-label="Mobile">
-          {NAV_LINKS.map((link) => (
-            <Link key={link.href} href={link.href} className={cn("rounded-xl px-3 py-3 text-base font-bold", pathname === link.href ? "bg-leaf-deep/10 text-leaf-deep" : "text-espresso/90")}>
-              {link.label}
-            </Link>
-          ))}
+          {NAV_LINKS.map((link) =>
+            link.external ? (
+              <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className="rounded-xl px-3 py-3 text-base font-bold text-espresso/90">
+                {link.label}
+              </a>
+            ) : (
+              <Link key={link.href} href={link.href} className={cn("rounded-xl px-3 py-3 text-base font-bold", pathname === link.href ? "bg-leaf-deep/10 text-leaf-deep" : "text-espresso/90")}>
+                {link.label}
+              </Link>
+            )
+          )}
           <a href={LINKS.order} target="_blank" rel="noopener noreferrer" className="mt-2 rounded-full bg-leaf-deep px-5 py-3.5 text-center text-base font-bold text-white">
             Order Online
           </a>

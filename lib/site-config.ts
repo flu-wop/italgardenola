@@ -11,11 +11,9 @@ export const SITE = {
     "I-tal Garden is a family-owned, fully plant-based soul food kitchen in New Orleans' Treme/7th Ward, serving Chef Ra's organic, ital-inspired take on Creole and soul food classics.",
 };
 
-// CONFIRM: address conflict. The live italgardennola.com home page shows
-// "2372 St. Claude Ave, Suite # 130, New Orleans, LA 70116" (matches below),
-// but the client's Toast gift card link uses the slug
-// `i-tal-garden-810-n-claiborne-ave`. Do not pick one until the client says
-// which is current; the Toast order URL below depends on the answer.
+// Address confirmed by the client: 2372 St. Claude Ave, Suite 130. (Their Toast
+// gift card slug still says 810-n-claiborne-ave, which looks like a former
+// location; it only affects the Toast URLs below.)
 export const CONTACT = {
   addressLine1: "2372 St. Claude Ave, Suite 130",
   addressLine2: "New Orleans, LA 70116",
@@ -63,9 +61,9 @@ export const SOCIAL = {
 export const LINKS = {
   // CONFIRM: the client's live site still sends "Order" to SpotHopper
   // (tmt.spotapps.co); only their gift cards use Toast. This URL is the Toast
-  // online ordering slug inferred from the gift card link and could not be
-  // opened (order.toasttab.com sits behind a Cloudflare bot challenge). Verify
-  // it in a browser and against the address question above.
+  // online ordering slug inferred from the gift card link (which carries the
+  // old Claiborne slug) and could not be opened: order.toasttab.com sits
+  // behind a Cloudflare bot challenge. Verify it in a browser.
   order: "https://order.toasttab.com/online/i-tal-garden-810-n-claiborne-ave",
   // Existing Toast gift card page, taken verbatim from italgardennola.com.
   giftCards: "https://order.toasttab.com/egiftcards/i-tal-garden-810-n-claiborne-ave",
@@ -73,12 +71,13 @@ export const LINKS = {
   mealPrep: "https://italmealprep.com/",
 };
 
-export const NAV_LINKS = [
+export const NAV_LINKS: { href: string; label: string; external?: boolean }[] = [
   { href: "/", label: "Home" },
   { href: "/menu", label: "Menu" },
   { href: "/catering", label: "Catering" },
   { href: "/events", label: "Events" },
-  { href: "/meal-prep", label: "Meal Prep" },
+  // The client's own site links out to their separate meal prep site; no page here.
+  { href: LINKS.mealPrep, label: "Meal Prep", external: true },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];

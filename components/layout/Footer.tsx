@@ -30,9 +30,15 @@ export function Footer() {
           <ul className="space-y-2 text-sm text-paper/85">
             {NAV_LINKS.filter((l) => l.href !== "/").map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="underline-offset-4 hover:underline">
-                  {link.label}
-                </Link>
+                {link.external ? (
+                  <a href={link.href} target="_blank" rel="noopener noreferrer" className="underline-offset-4 hover:underline">
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link href={link.href} className="underline-offset-4 hover:underline">
+                    {link.label}
+                  </Link>
+                )}
               </li>
             ))}
             <li>

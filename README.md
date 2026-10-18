@@ -29,7 +29,7 @@ npm run check:menu   # validates lib/menu-data.ts and the cart/price maths
 
 ## Open items for the client
 
-Search the code for `CONFIRM` — address (St. Claude vs. N Claiborne), hours, the Toast
+Search the code for `CONFIRM` — hours, the Toast
 order URL, and modifier rules (the public menu does not list them; Toast does).
 
 ## Vercel (one-time)
