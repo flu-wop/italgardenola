@@ -1,29 +1,40 @@
 # I-tal Garden — italgardennola.com
 
-Next.js rebuild of I-tal Garden's website (replacing the old SpotHopper template). Lives as its own app inside the `in-flu-ential` repo — deploy it as its **own separate Vercel project**, not as part of the in-flu-ential agency site.
+Next.js 16 (App Router, TypeScript, Tailwind 3, framer-motion) site for I-tal Garden.
+This is its **own repo**, `flu-wop/italgardenola`, deployed as its **own Vercel project**
+(root directory = repo root).
 
-## Vercel setup (one-time)
+> Demo build: every page is `noindex` until the client signs off.
 
-1. Vercel → Add New → Project → Import `flu-wop/in-flu-ential`.
-2. **Root Directory**: set to `ital-garden` (Project Settings → General → Root Directory). This is what makes it build/deploy independently from the root agency app in the same repo.
-3. Framework preset: Next.js (auto-detected).
-4. Add the domain `italgardennola.com` under Project Settings → Domains once DNS is ready to cut over from the old SpotHopper site.
-5. Push to `main` (or whatever branch this project tracks) → Vercel builds only this subfolder.
-
-## Before launch — things James needs to finish
-
-- **Photos**: every image on the site is a styled placeholder (dashed border, "Photo needed: ___" label) — swap them for real shots from italgardennola.com / @italgardennola once you send them over. Real files go in `public/images/`, then replace the `<PhotoSlot label="..." />` components with `<Image src="..." />`.
-- **Ordering links**: `lib/site-config.ts` → `LINKS` — the `order`, `reserve`, `cateringOrder`, and `jobs` URLs are placeholders pointing at the SpotHopper root (`tmt.spotapps.co`). Swap in the real spot-specific URLs.
-- **Hours**: `lib/site-config.ts` → `HOURS` / `HOURS_SCHEMA` — currently Wed–Fri 11am–3pm, sourced from public aggregator listings (Google/Yelp), not the SpotHopper dashboard directly. Confirm against the real posted hours.
-- **Menu + pricing**: `lib/menu-data.ts` — item names/descriptions are drawn from public listings, no prices shown (kitchen runs specials, and I couldn't confirm current pricing). Replace with Chef Ra's real, current, priced menu.
-- **About/Chef Ra bio**: `app/about/page.tsx` has a `TODO` comment — the philosophy copy is solid, but Chef Ra's personal story should come from him directly.
-- **Meal Prep**: `app/meal-prep/page.tsx` cross-promotes italmealprep.com — confirm that's still the live domain/ordering flow for the meal prep line.
-
-## Local dev
+## Local
 
 ```bash
-cd ital-garden
 npm install
-npm run dev
-# → http://localhost:3000
+npm run dev          # http://localhost:3000
+npm run build
+npm run lint
+npm run check:menu   # validates lib/menu-data.ts and the cart/price maths
 ```
+
+## Where things live
+
+| What | File |
+| --- | --- |
+| Address, phone, hours, every external link | `lib/site-config.ts` |
+| Menu + modifiers (daily and catering) | `lib/menu-data.ts` |
+| Kitchen "Specials today" | `lib/specials.ts` |
+| Price and cart maths (pure) | `lib/pricing.ts`, `lib/cart-core.ts` |
+| Palette and where each color came from | `PALETTE.md` |
+| Ordering routes for later | `ORDERING.md` |
+
+## Open items for the client
+
+Search the code for `CONFIRM` — address (St. Claude vs. N Claiborne), hours, the Toast
+order URL, and modifier rules (the public menu does not list them; Toast does).
+
+## Vercel (one-time)
+
+1. Vercel → Add New → Project → import `flu-wop/italgardenola`.
+2. Framework preset: Next.js. No root directory override.
+3. Add `italgardennola.com` under Domains only after sign-off and DNS cutover.
+4. Remove `robots: { index: false }` in `app/layout.tsx` and fix `app/robots.ts` at launch.

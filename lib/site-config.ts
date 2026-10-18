@@ -11,6 +11,11 @@ export const SITE = {
     "I-tal Garden is a family-owned, fully plant-based soul food kitchen in New Orleans' Treme/7th Ward, serving Chef Ra's organic, ital-inspired take on Creole and soul food classics.",
 };
 
+// CONFIRM: address conflict. The live italgardennola.com home page shows
+// "2372 St. Claude Ave, Suite # 130, New Orleans, LA 70116" (matches below),
+// but the client's Toast gift card link uses the slug
+// `i-tal-garden-810-n-claiborne-ave`. Do not pick one until the client says
+// which is current; the Toast order URL below depends on the answer.
 export const CONTACT = {
   addressLine1: "2372 St. Claude Ave, Suite 130",
   addressLine2: "New Orleans, LA 70116",
@@ -27,9 +32,9 @@ export const CONTACT = {
     "https://maps.google.com/maps?q=2372+St+Claude+Ave+Suite+130+New+Orleans+LA+70116&t=&z=15&ie=UTF8&iwloc=&output=embed",
 };
 
-// PENDING: confirmed against public aggregator listings (Google/Yelp/website
-// summaries) but not the primary source directly — verify against the
-// SpotHopper dashboard / current posted hours before launch.
+// CONFIRM: hours came from public aggregator listings (Google/Yelp), not the
+// client. The live site renders hours with JavaScript, so they could not be
+// re-verified. Confirm with the client before launch.
 export const HOURS: { day: string; hours: string }[] = [
   { day: "Monday", hours: "Closed" },
   { day: "Tuesday", hours: "Closed" },
@@ -56,10 +61,15 @@ export const SOCIAL = {
 };
 
 export const LINKS = {
-  order: "https://tmt.spotapps.co/ordering-menu?spot_id=100582&accordion=true&images=yes&callback_url=http://italgardennola.com/",
-  reserve: "https://tmt.spotapps.co/reservations?spot_id=100582&callback_url=http://italgardennola.com/",
-  cateringOrder: "https://tmt.spotapps.co/catering?spot_id=100582&callback_url=http://italgardennola.com/",
-  jobs: "https://tmt.spotapps.co/job-listings?spot_id=100582&callback_url=http://italgardennola.com/",
+  // CONFIRM: the client's live site still sends "Order" to SpotHopper
+  // (tmt.spotapps.co); only their gift cards use Toast. This URL is the Toast
+  // online ordering slug inferred from the gift card link and could not be
+  // opened (order.toasttab.com sits behind a Cloudflare bot challenge). Verify
+  // it in a browser and against the address question above.
+  order: "https://order.toasttab.com/online/i-tal-garden-810-n-claiborne-ave",
+  // Existing Toast gift card page, taken verbatim from italgardennola.com.
+  giftCards: "https://order.toasttab.com/egiftcards/i-tal-garden-810-n-claiborne-ave",
+  // Meal prep is a separate site run by the client.
   mealPrep: "https://italmealprep.com/",
 };
 
