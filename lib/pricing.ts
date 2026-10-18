@@ -46,7 +46,7 @@ export function validateSelection(item: MenuItem, sel: Selection): string[] {
     const picked = g.options.filter((o) => sel.optionIds.includes(o.id));
     if (picked.some((o) => o.soldOut)) problems.push(`${g.name}: a chosen option is sold out.`);
     const min = g.required ? Math.max(1, g.min) : g.min;
-    if (picked.length < min) problems.push(min === 1 ? `Choose a ${g.name.toLowerCase()}.` : `${g.name}: choose at least ${min}.`);
+    if (picked.length < min) problems.push(min === 1 ? `${g.name}: choose one option.` : `${g.name}: choose at least ${min}.`);
     if (picked.length > g.max) problems.push(`${g.name}: choose at most ${g.max}.`);
   }
   return problems;

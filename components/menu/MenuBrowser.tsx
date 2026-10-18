@@ -150,7 +150,7 @@ export function MenuBrowser({ menu }: { menu: "daily" | "catering" }) {
               </h2>
               {s.note && <span className="eyebrow">{s.note}</span>}
             </div>
-            <div className="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid items-start gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {items.map((i) => (
                 <ItemCard key={i.id} item={i} onOpen={setOpen} />
               ))}
