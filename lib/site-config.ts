@@ -84,6 +84,7 @@ export const NAV_LINKS: { href: string; label: string; external?: boolean }[] = 
   { href: "/meal-prep", label: "Meal Prep" },
   { href: LINKS.reserve, label: "Reserve", external: true },
   { href: LINKS.jobs, label: "Jobs", external: true },
+  { href: "/fundraiser", label: "Fundraiser" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
