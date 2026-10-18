@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint .",
+    "check:menu": "tsx scripts/check-menu.ts"
   },
   "dependencies": {
     "@fontsource/square-peg": "^5.3.0",

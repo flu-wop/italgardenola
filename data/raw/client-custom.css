@@ -1,0 +1,1061 @@
+@import url("https://fonts.googleapis.com/css2?family=Square+Peg&family=Sulphur+Point&display=swap");
+
+/*
+Headings, buttons, navigation, text: font-family: 'Sulphur Point', sans-serif, Regular 400;
+Subheadings: font-family: 'Square Peg', cursive, Regular 400;
+*/
+
+a {
+  color: #fff;
+}
+
+body {
+  font-family: 'Sulphur Point', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Sulphur Point', sans-serif;
+}
+
+#home_page_cover #coverVideo {
+  width: 100%;
+  height: 85vh;
+  object-fit: cover;
+  z-index: 100;
+  object-position: center top;
+}
+.header {
+  object-fit: cover;
+	background-color: #332927;
+}
+
+.navigation-left li a,
+.navigation-right li a {
+  text-transform: uppercase;
+  font-weight: 400;
+}
+.nav-v2 .navigation-left li.active a,
+.nav-v2 .navigation-right li.active a,
+.nav-v2 .navigation-left li a:hover,
+.nav-v2 .navigation-right li a:hover,
+.nav-v2 .navigation-left li a:focus,
+.nav-v2 .navigation-right li a:focus {
+  color: #1e7741;
+}
+.nav-v2 .social-icon:hover,
+.nav-v2 .social-icon:active
+.nav-v2 .social-icon:focus {
+  color: #1e7741;
+}
+.navigation-social {
+padding-left: 15px;
+}
+
+/* nav dropdown */
+
+li.drop-down-link {
+	position: relative;
+}
+li.drop-down-link .sub-menu {
+	display: none;
+	position: absolute;
+	left: 0px;
+	top: 33px;
+	width: 130px;
+	background-color: #e8e8d0;
+	padding: 5px;
+}
+li.drop-down-link .sub-menu a {
+	display: block;
+  font-size: 1em !important;
+	font-family: 'Sulphur Point', sans-serif;
+	text-transform: uppercase !important;
+	color: #000;
+	opacity: 1;
+}
+
+li.drop-down-link .sub-menu a:hover,
+li.drop-down-link .sub-menu a:focus {
+	text-decoration: none;
+	color: #1e7741;
+}
+/* nav end */
+
+.section-header,
+.uk-overlay-panel h1,
+.on-cover-content .section-wrapper .section-header,
+.about-us-v8-content .text-wrapper h1,
+.about-us-v7-content .text-wrapper h1,
+.tmt-section h1,
+.specials h1,
+.events-container h1,
+.custom-modal .newsletter-popup .section-header,
+.about-us-s4-wrapper h1 {
+    font-size: 4.2em;
+    font-family: 'Sulphur Point', sans-serif;
+    text-transform: uppercase;
+}
+.about-us-v8-content h2,
+.tmt-section h2,
+.reviews-v2-wrapper h2,
+.map-newsletter h2 {
+    font-family: 'Square Peg', cursive;
+    font-size: 3.2em;
+}
+.empty-content-message h2,
+.empty-content-message h3,
+.drink-menu .empty-content-message h2,
+.drink-menu .empty-content-message h3,
+.specials .empty-content-message h2,
+.specials .empty-content-message h3,
+.events-container .empty-content-message h2,
+.events-container .empty-content-message h3 {
+    font-family: 'Sulphur Point', sans-serif;
+    font-size: 1.4em;
+    text-align: center;
+    text-transform: none;
+}
+.custom-temp-btn,
+.about-us-v8-wrapper a.custom-temp-btn,
+.uk-overlay-panel a.custom-temp-btn,
+.tmt-section a.custom-temp-btn,
+.map-newsletter .sph-email-subscription .sph-submit-button,
+.custom-modal .newsletter-popup .sph-email-subscription .sph-submit-button,
+.food-menu-nav .food-menu-nav-item {
+    padding: 10px 40px;
+    font-family: 'Sulphur Point', sans-serif;
+    text-transform: uppercase;
+    font-size: 18px;
+    box-shadow: none;
+    border-radius: 0;
+    opacity: 1;
+    -moz-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.events-sign-up-page .reservations-and-parties button[disabled],
+.events-sign-up-page .reservations-and-parties button:hover,
+.events-sign-up-page .reservations-and-parties button:focus,
+.uk-overlay-panel a.custom-temp-btn,
+.order-tmt-section a.custom-temp-btn {
+    background-color: #e8e8d0;
+    color: #444041;
+    border: 2px solid #e8e8d0;
+}
+.about-us-v8-wrapper a.custom-temp-btn,
+.map-newsletter .sph-email-subscription .sph-submit-button,
+.custom-modal .newsletter-popup .sph-email-subscription .sph-submit-button,
+.food-menu-nav .food-menu-nav-item {
+    background-color: #1e7741;
+    color: #fff;
+    border: 2px solid #1e7741;
+}
+.about-us-v8-wrapper.custom-about-us-v8-wrapper a.custom-temp-btn {
+    background-color: #0b5226;
+    color: #fff;
+    border: 2px solid #0b5226;
+}
+.events-sign-up-page .reservations-and-parties button[disabled]:hover,
+.events-sign-up-page .reservations-and-parties button,
+.about-us-v8-wrapper a.custom-temp-btn:hover,
+.food-menu-nav .food-menu-nav-item:hover,
+.food-menu-nav .food-menu-nav-item.active,
+.food-menu-nav .food-menu-nav-item:focus {
+    background-color: #f4be20;
+    color: #5f3e00;
+    border: 2px solid #5f3e00;
+}
+.uk-overlay-panel a.custom-temp-btn:hover,
+.order-tmt-section a.custom-temp-btn:hover,
+.map-newsletter .sph-email-subscription .sph-submit-button:hover,
+.custom-modal .newsletter-popup .sph-email-subscription .sph-submit-button:hover,
+.about-us-v8-wrapper.custom-about-us-v8-wrapper a.custom-temp-btn:hover {
+    background-color: #fff;
+    color: #1e7741;
+    border: 2px solid #fff;
+}
+.events-background a.custom-temp-btn {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.events-background a.custom-temp-btn:hover {
+  background-color: #fff;
+  color: #000;
+  border: 2px solid #fff;
+}
+
+/* home page */
+
+
+/* slideshow_v2 section */
+
+.uk-overlay-background {
+  background: rgba(0, 0, 0, 0.5);
+}
+.uk-overlay-panel {
+  padding-left: 0;
+  padding-right: 0;
+}
+.uk-overlay-panel h1 {
+  margin-top: 0;
+}
+.uk-overlay-panel .container {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+.uk-dotnav-contrast>.uk-active>* {
+  background: #b1c89a;
+  transform: scale(1);
+}
+.uk-dotnav-contrast>*>* {
+  background: rgba(255, 255, 255, 1);
+}
+.uk-dotnav-contrast {
+  padding-bottom: 30px;
+}
+.uk-overlay-panel .slide-text {
+  font-family: 'Square Peg', cursive;
+  font-size: 3.2em;
+}
+
+/* slideshow_v2 section end*/
+
+/* banner section */
+
+.banner-section {
+  padding: 35px 0;
+}
+.banner-section h1 {
+  font-family: 'Sulphur Point', sans-serif;
+  text-transform: capitalize;
+  font-size: 1.4em;
+}
+.banner-section .banner-pin {
+  color: #f4be20;
+}
+.banner-section .banner-pin:hover,
+.banner-section .banner-pin:active,
+.banner-section .banner-pin:focus {
+  color: #fff;
+}
+
+/* banner section end */
+
+/* about_us_v8 section */
+
+.about-us-v8-wrapper::before {
+  background-color: #f0efdd;
+}
+.about-us-v8-content .text-wrapper h1 {
+  margin-top: 30px;
+}
+.about-us-v8-content .text-content p {
+  margin: 30px auto;
+}
+
+/* about_us_v8 section end*/
+
+/* custom about_us_v8 section */
+
+.about-us-v8-wrapper.custom-about-us-v8-wrapper::before {
+  background-color: #f4be20;
+}
+.about-us-v8-wrapper.custom-about-us-v8-wrapper .about-us-v8-content .text-wrapper h2 {
+  color: #3f413e;
+}
+
+/* custom about_us_v8 section end */
+
+/* custom about_us_v9 section */
+
+.about-us-v8-wrapper.custom-about-us-v9-wrapper .about-us-v8-content .text-wrapper h2 {
+  color: #1e7741;
+}
+
+/* custom about_us_v9 section end */
+
+/* order tmt section */
+
+.order-tmt-section {
+  padding: 5em 0;
+}
+.order-tmt-section h1 {
+  margin-top: 10px;
+}
+
+/* order tmt section end*/
+
+/* reviews section */
+
+.carousel-wrapper.reviews-v2-wrapper.section-wrapper {
+  background-attachment: scroll !important;
+  background-size: cover !important;
+  background-position: center center !important;
+}
+.reviews-v2-wrapper .container {
+  padding-top: 0;
+}
+.reviews-v2-wrapper h1 {
+  margin-top: 0;
+}
+.reviews-v2-wrapper h2 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-transform: none;
+  color: #1e7741;
+}
+.reviews-v2-wrapper h3 {
+  margin-top: 30px;
+  margin-bottom: 0;
+  font-family: 'Sulphur Point', sans-serif;
+  text-transform: uppercase;
+  font-size: 1.4em;
+  color: #3f413e;
+}
+.reviews-v2-wrapper h3 .fa.fa-star {
+  color: #ffbd07;
+}
+.reviews-v2-wrapper .review-text p {
+  font-size: 1.3em;
+  line-height: 1.6em;
+}
+.reviews-v2-wrapper .review-quote {
+  opacity: 1;
+  color: #1e7741;
+}
+.reviews-v2-wrapper .owl-theme .owl-dots .owl-dot button {
+  background: #1e7741;
+  border: 1px solid #1e7741;
+  opacity: 1;
+}
+.reviews-v2-wrapper .owl-theme .owl-dots .owl-dot.active button,
+.reviews-v2-wrapper .owl-theme .owl-dots .owl-dot:hover button {
+  background: #1e7741;
+  border: 1px solid #1e7741;
+  opacity: 0.4;
+  outline: 0;
+}
+
+/* reviews section end*/
+
+/* maps-newsletter section */
+
+.googlemap-v3-wrapper input:-webkit-autofill,
+.googlemap-v3-wrapper input:-webkit-autofill:hover,
+.googlemap-v3-wrapper input:-webkit-autofill:focus,
+.googlemap-v3-wrapper input:-webkit-autofill:active {
+  -webkit-text-fill-color: #653b00;
+  color: #653b00!important;
+}
+.map-newsletter .text-wrapper:before {
+    background-color: #f4be20;
+}
+.map-newsletter {
+    border-right: none;
+    color: #3f413e;
+}
+.map-newsletter h2 {
+    color: #3f413e;
+    text-transform: none;
+}
+.map-newsletter .sph-email-subscription h2 {
+    font-family: 'Sulphur Point', sans-serif;
+    color: #3f413e;
+}
+.map-newsletter .bar {
+    top: -5px;
+}
+.map-newsletter .bar:before,
+.map-newsletter .bar:after {
+    background: #1e7741;
+}
+.map-newsletter .sph-email-subscription .sph-email-input {
+    padding: 13px 5px;
+    border-bottom: 1px solid #2a0000;
+    color: #653b00;
+}
+.map-newsletter .sph-email-subscription input::-webkit-input-placeholder {
+    color: #653b00;
+}
+.map-newsletter .sph-email-subscription input:-moz-placeholder { /* Firefox 18- */
+    color: #653b00;
+}
+.map-newsletter .sph-email-subscription input::-moz-placeholder {  /* Firefox 19+ */
+    color: #653b00;
+}
+.map-newsletter .sph-email-subscription input:-ms-input-placeholder {
+    color: #653b00;
+}
+.map-newsletter .text-wrapper:before {
+    background-attachment: scroll;
+}
+.googlemap-v3-wrapper .triangle {
+    display: none;
+}
+
+/* maps-newsletter section end*/
+
+/* custom modal section */
+
+.custom-modal .modal-content {
+  background-color: #f4be20;
+  color: #3f413e;
+}
+.custom-modal .newsletter-popup .section-header {
+  color: #3f413e;
+}
+.custom-modal .newsletter-popup .sph-email-subscription h2,
+.custom-modal .newsletter-popup .sph-email-subscription label h2 {
+  margin-bottom: 20px;
+  font-family: 'Sulphur Point', sans-serif;
+  font-size: 1.4em;
+}
+.custom-modal .newsletter-popup .sph-email-subscription .sph-email-input {
+  padding: 10px 15px;
+  border: 1px solid #2a0000;
+  background: transparent;
+  color: #653b00;
+}
+.custom-modal .newsletter-popup .sph-email-subscription .sph-email-input::-webkit-input-placeholder {
+  color: #653b00;
+}
+.custom-modal .newsletter-popup .sph-email-subscription .sph-email-input:-moz-placeholder { /* Firefox 18- */
+  color: #653b00;
+}
+.custom-modal .newsletter-popup .sph-email-subscription .sph-email-input::-moz-placeholder {  /* Firefox 19+ */
+  color: #653b00;
+}
+.custom-modal .newsletter-popup .sph-email-subscription .sph-email-input:-ms-input-placeholder {
+  color: #653b00;
+}
+.custom-modal .close {
+  color: #653b00;
+}
+
+/* custom modal section end*/
+
+/* contact-v3 section*/
+
+.contact-v3 {
+  border-bottom: 1px solid #fff;
+  background-color: #1e7741;
+}
+.contact-v3 .hours-title h1,
+.contact-v3 .social-title h1,
+.contact-v3 .contact-us-title h1 {
+  font-family: 'Sulphur Point', sans-serif;
+  font-size: 1.1em;
+  text-transform: uppercase;
+}
+.contact-v3 .days {
+  padding-bottom: 0;
+  text-transform: capitalize;
+}
+.contact-v3 .from-to {
+  padding-top: 0;
+  padding-bottom: 20px;
+  text-transform: lowercase;
+}
+.contact-us p a {
+  color: #fff;
+  text-decoration: none;
+}
+.contact-v3 a.contact-icon:focus {
+  color: #fff;
+}
+/* contact-v3 section end*/
+
+/* footer section */
+
+.footer-v2-wrapper,
+.footer-v2-wrapper a {
+  background-color: #1e7741;
+  border-top: none;
+  color: #fff;
+}
+
+/* footer section end*/
+
+/* food menu page */
+
+.food-menu-page .food-menu-v2-wrapper,
+.drink-menu-page .drink-menu-v2-wrapper {
+    padding-top: 100px;
+}
+.food-menu-grid .food-menu-description p {
+    font-family: 'Sulphur Point', sans-serif;
+}
+.food-menu-grid .menu-description p {
+    font-family: 'Sulphur Point', sans-serif;
+    color: #444041;
+}
+.food-menu-grid-item-content {
+    border-radius: 0;
+    background-color: #fff;
+}
+.drink-menu .food-menu-grid h2 {
+    font-family: 'Square Peg', cursive;
+    font-size: 2.8em;
+    text-transform: none;
+    word-break: break-word;
+    color: #1e7741;
+}
+.food-menu-grid .food-item-title h3,
+.food-menu-grid .food-price {
+    font-family: 'Sulphur Point', sans-serif;
+    font-size: 1.3em;
+    text-transform: none;
+    color: #444041;
+}
+.food-menu-grid-item-content .food-menu-content {
+    border-left: 1px solid #f4be20;
+}
+.food-menu-grid .food-price {
+    color: #1e7741;
+    padding: 0 10px 0 5px;
+}
+.food-menu-grid .food-item-description {
+    font-size: 1.1em;
+    color: #757575;
+}
+
+/* food menu page end*/
+/* catering page */
+.catering .catering-btn-holder .custom-temp-btn {
+  background-color: #0b5226;
+  color: #fff;
+  border: 2px solid #0b5226;
+}
+.catering .catering-btn-holder .custom-temp-btn:hover,
+.catering .catering-btn-holder .custom-temp-btn.active,
+.catering .catering-btn-holder .custom-temp-btn:focus {
+    background-color: #f4be20;
+    color: #5f3e00;
+    border: 2px solid #5f3e00;
+}
+
+.catering .food-menu-v2-wrapper .container .food-menu-grid-item .menu-description p{
+  color: #fff;
+}
+
+
+/* catering page end */
+/* about us page */
+
+.about-us-page .about-us-s1-content img.logo-about {
+  max-width: 100px;
+}
+
+/* about us page end */
+
+/* Events Sign Up page*/
+.events-sign-up-page .reservations-and-parties p.submit-success {
+  color: #fff;
+}
+.events-sign-up-page .tabs-container {
+  text-shadow: none;
+}
+/* Events Sign Up page end*/
+
+/* Fundraiser  page */
+.article-background.fundraiser-page:before {
+	content: "";
+	position: fixed;
+	left: 0;
+	right: 0;
+	z-index: -1;
+	display: block;
+	background-image: url('https://static.spotapps.co/web/italgardennola--com/css/../custom/fundraiser_page_back.jpg');
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+  background-position: center;
+	-webkit-filter: grayscale(0.3) opacity(0.2);
+	-moz-filter: grayscale(0.3) opacity(0.2);
+	-o-filter: grayscale(0.3) opacity(0.2);
+	-ms-filter: grayscale(0.3) opacity(0.2);
+	filter: grayscale(0.3) opacity(0.2);
+}
+.article-background.fundraiser-page .tabs-container {
+    text-shadow: none;
+}
+.article-background.fundraiser-page .pagecontent {
+    text-align: center;
+    padding-bottom: 2%;
+}
+.article-background.fundraiser-page .section-header {
+    margin-top: 35px;
+    margin-bottom: 30px;
+}
+.article-background.fundraiser-page .img-holder {
+  width: 70%;
+  margin: 2% auto;
+}
+.article-background.fundraiser-page .img-holder img{
+  width: 100%;
+}
+.article-background.fundraiser-page a.custom-temp-btn {
+    margin: 20px 5px 0;
+    color: #fff;
+    background-color: #0b5226;
+    border: 2px solid #fff;
+}
+.article-background.fundraiser-page a.custom-temp-btn:is(:hover,:focus,:active) {
+  background-color: transparent;
+}
+/* Fundraiser  page end*/
+
+.custom-about-us-v9-wrapper .about-us-v8-item-1 .text-wrapper .text-content  .text-holder ul li {
+    list-style-type: none;
+    font-size: 1.3em;
+}
+
+.custom-about-us-v9-wrapper .about-us-v8-item-1 .text-wrapper .text-content  .text-holder ul {
+    padding-left: 0;
+}
+
+.custom-about-us-v9-wrapper .about-us-v8-item-1 .text-wrapper .text-content p a {
+    margin-top: 0;
+}
+
+/* media queries */
+
+@media (max-width:1400px) {
+  .section-header,
+  .uk-overlay-panel h1,
+  .on-cover-content .section-wrapper .section-header,
+  .about-us-v8-content .text-wrapper h1,
+  .about-us-v7-content .text-wrapper h1,
+  .tmt-section h1,
+  .specials h1,
+  .events-container h1,
+  .custom-modal .newsletter-popup .section-header,
+  .about-us-s4-wrapper h1 {
+      font-size: 3.6em;
+  }
+  .about-us-v8-content h2,
+  .tmt-section h2,
+  .reviews-v2-wrapper h2,
+  .map-newsletter h2 {
+      font-size: 2.9em;
+  }
+  .uk-overlay-panel .slide-text {
+      font-size: 2.9em;
+  }
+  .banner-section {
+      padding: 25px 0;
+  }
+  .banner-section h1 {
+      font-size: 1.3em;
+  }
+  .reviews-v2-wrapper h3 {
+      font-size: 1.3em;
+  }
+  .custom-modal .newsletter-popup .sph-email-subscription h2, 
+  .custom-modal .newsletter-popup .sph-email-subscription label h2 {
+      font-size: 1.3em;
+  }
+  .contact-v3 .contact-location, 
+  .contact-v3 .hours, 
+  .contact-v3 .find-us {
+      font-size: 1em;
+  }
+  .about-us-s1-wrapper {
+    margin-top: 70px;
+  }
+}
+
+@media (max-width:1200px) {
+  #home_page_cover #coverVideo {
+    height: 75vh;
+  }
+  .section-header,
+  .uk-overlay-panel h1,
+  .on-cover-content .section-wrapper .section-header,
+  .about-us-v8-content .text-wrapper h1,
+  .about-us-v7-content .text-wrapper h1,
+  .tmt-section h1,
+  .specials h1,
+  .events-container h1,
+  .custom-modal .newsletter-popup .section-header,
+  .about-us-s4-wrapper h1 {
+      font-size: 3.3em;
+  }
+  .about-us-v8-content h2,
+  .tmt-section h2,
+  .reviews-v2-wrapper h2,
+  .map-newsletter h2 {
+      font-size: 2.8em;
+  }
+  .uk-overlay-panel .slide-text {
+      font-size: 2.8em;
+  }
+  .banner-section {
+      padding: 20px 0;
+  }
+  .banner-section h1 {
+      font-size: 1.2em;
+  }
+  .empty-content-message h2,
+  .empty-content-message h3,
+  .drink-menu .empty-content-message h2,
+  .drink-menu .empty-content-message h3,
+  .specials .empty-content-message h2,
+  .specials .empty-content-message h3,
+  .events-container .empty-content-message h2,
+  .events-container .empty-content-message h3 {
+      font-size: 1.3em;
+  }
+  .food-menu-v2-wrapper .section-header, 
+  .drink-menu-v2-wrapper .section-header {
+      padding-top: 90px;
+  }
+}
+
+@media (max-width:1023px) {
+  video#coverVideo {
+    margin-top: 70px;
+  }
+  .nav>li {
+      padding: 0;
+  }
+  .nav>li>a {
+      font-family: 'Sulphur Point', sans-serif;
+      font-weight: 400;
+      text-transform: uppercase;
+      font-size: 0.9em;
+  }
+  li.drop-down-link .sub-menu a {
+    font-size: 0.8em !important;
+  }
+  .navbar-inverse .navbar-nav>li>a:hover,
+  .navbar-inverse .navbar-nav>li>a:focus {
+      color: #1e7741;
+  }
+  .header-logo {
+      left: 10px;
+      max-width: 50px;
+  }
+  .nav-v2 .social-icon {
+      font-size: 24px;
+      line-height: 28px;
+  }
+  p {
+      font-size: 1.2em;
+  }
+  .map-newsletter .sph-email-subscription h2 {
+      font-size: 1.2em;
+  }
+  .reviews-v2-wrapper .review-text p {
+      font-size: 1.2em;
+  }
+  .custom-modal .newsletter-popup .sph-email-subscription h2, 
+  .custom-modal .newsletter-popup .sph-email-subscription label h2 {
+      font-size: 1.2em;
+  }
+  .empty-content-message h2,
+  .empty-content-message h3,
+  .drink-menu .empty-content-message h2,
+  .drink-menu .empty-content-message h3,
+  .specials .empty-content-message h2,
+  .specials .empty-content-message h3,
+  .events-container .empty-content-message h2,
+  .events-container .empty-content-message h3 {
+      font-size: 1.2em;
+  }
+  .food-menu-grid .food-item-title h3, 
+  .food-menu-grid .food-price {
+      font-size: 1.2em;
+  }
+  .custom-temp-btn,
+  .about-us-v8-wrapper a.custom-temp-btn,
+  .uk-overlay-panel a.custom-temp-btn,
+  .tmt-section a.custom-temp-btn,
+  .map-newsletter .sph-email-subscription .sph-submit-button,
+  .custom-modal .newsletter-popup .sph-email-subscription .sph-submit-button,
+  .food-menu-nav .food-menu-nav-item {
+      font-size: 16px;
+  }
+  .custom-about-us-v9-wrapper .about-us-v8-item-1 .text-wrapper .text-content  .text-holder ul li {
+    font-size: 1.2em;
+  }
+}
+
+@media (max-width:991px) {
+  #home_page_cover #coverVideo {
+    height: 42vh;
+  }
+  video#coverVideo {
+    margin-top: 85px;
+  }
+  .section-header,
+  .uk-overlay-panel h1,
+  .on-cover-content .section-wrapper .section-header,
+  .about-us-v8-content .text-wrapper h1,
+  .about-us-v7-content .text-wrapper h1,
+  .tmt-section h1,
+  .specials h1,
+  .events-container h1,
+  .custom-modal .newsletter-popup .section-header,
+  .about-us-s4-wrapper h1 {
+      font-size: 2.9em;
+  }
+  .about-us-v8-content h2,
+  .tmt-section h2,
+  .reviews-v2-wrapper h2,
+  .map-newsletter h2 {
+      font-size: 2.5em;
+  }
+  .uk-overlay-panel .slide-text {
+      font-size: 2.6em;
+  }
+  .banner-section {
+      padding: 15px 0;
+  }
+  .banner-section h1 {
+      font-size: 1.1em;
+  }
+  .order-tmt-section {
+      padding: 3em 0;
+  }
+  .reviews-v2-wrapper h3 {
+      font-size: 1.2em;
+  }
+  .map-newsletter .bar {
+      top: 0;
+  }
+  .drink-menu .food-menu-grid h2 {
+      font-size: 2.6em;
+  }
+  .contact-v3 .hours-title h1, 
+  .contact-v3 .social-title h1, 
+  .contact-v3 .contact-us-title h1 {
+      font-size: 1em;
+  }
+  .about-us-s2-wrapper .about-us-v7-content .text-wrapper .text-content {
+      text-align: center;
+  }
+  .nav>li>a {
+      padding: 10px 5px;
+  }
+}
+
+@media (max-width:767px) {
+  #home_page_cover #coverVideo {
+    height: 32vh;
+    margin-top: 70px;
+  }
+  video#coverVideo {
+    margin-top: 70px;
+  }
+  .navbar-nav>li>a.order-option:before {
+    content: "ORDER ";
+  }
+  .header-logo {
+      max-width: 45px;
+  }
+  .nav>li>a {
+      padding: 4px 15px;
+  }
+  .navbar-inverse .navbar-collapse {
+      overflow: hidden;
+  }
+  .navbar-inverse .navbar-nav>li>a:hover,
+  .navbar-inverse .navbar-nav>li.active>a,
+  .navbar-inverse .navbar-nav>li.active>a:hover {
+      background-color: #1e7741;
+      color: #fff !important;
+  }
+  .nav-v2 .navbar-nav,
+  .drink-menu header .nav-v2 .navbar-nav {
+      margin-top: 10px !important;
+      margin-bottom: -12.5px !important;
+  }
+  .about-us-page .about-us-s1-content img.logo-about {
+      max-width: 75px;
+  }
+  .section-header,
+  .uk-overlay-panel h1,
+  .on-cover-content .section-wrapper .section-header,
+  .about-us-v8-content .text-wrapper h1,
+  .about-us-v7-content .text-wrapper h1,
+  .tmt-section h1,
+  .specials h1,
+  .events-container h1,
+  .custom-modal .newsletter-popup .section-header,
+  .about-us-s4-wrapper h1 {
+      font-size: 2.6em;
+  }
+  .about-us-v8-content h2,
+  .tmt-section h2,
+  .reviews-v2-wrapper h2,
+  .map-newsletter h2 {
+      font-size: 2.3em;
+  }
+  .uk-overlay-panel .slide-text {
+      font-size: 2.4em;
+  }
+  .banner-section {
+      padding: 10px 0;
+  }
+  .banner-section h1 {
+      font-size: 1em;
+  }
+  .about-us-v8-content .text-wrapper,
+  .about-us-v8-content .text-wrapper p {
+      text-align: center !important;
+  }
+  p {
+      font-size: 1.1em;
+  }
+  .map-newsletter .sph-email-subscription h2 {
+      font-size: 1.1em;
+  }
+  .reviews-v2-wrapper .review-text p {
+      font-size: 1.1em;
+  }
+  .custom-modal .newsletter-popup .sph-email-subscription h2, 
+  .custom-modal .newsletter-popup .sph-email-subscription label h2 {
+      font-size: 1.1em;
+  }
+  .custom-temp-btn,
+  .about-us-v8-wrapper a.custom-temp-btn,
+  .uk-overlay-panel a.custom-temp-btn,
+  .tmt-section a.custom-temp-btn,
+  .map-newsletter .sph-email-subscription .sph-submit-button,
+  .custom-modal .newsletter-popup .sph-email-subscription .sph-submit-button {
+      font-size: 15px;
+  }
+  .food-menu-nav .food-menu-nav-item {
+      font-size: 14px;
+  }
+  .empty-content-message h2,
+  .empty-content-message h3,
+  .drink-menu .empty-content-message h2,
+  .drink-menu .empty-content-message h3,
+  .specials .empty-content-message h2,
+  .specials .empty-content-message h3,
+  .events-container .empty-content-message h2,
+  .events-container .empty-content-message h3 {
+      font-size: 1.1em;
+  }
+  .reviews-v2-wrapper h1 {
+      margin-top: 20px;
+  }
+  .reviews-v2-wrapper h3 {
+      font-size: 1.1em;
+  }
+  .footer-v2-wrapper a {
+      font-size: 1em;
+  }
+  .food-menu-v2-wrapper .section-header,
+  .drink-menu-v2-wrapper .section-header {
+      padding-top: 10px;
+  }
+  .food-menu-nav .food-menu-nav-item.custom-temp-btn,
+  .food-menu-nav .food-menu-nav-item.custom-temp-btn.active,
+  .food-menu-nav .food-menu-nav-item.custom-temp-btn:hover,
+  .food-menu-nav .food-menu-nav-item.custom-temp-btn:focus {
+      border: none;
+      border-bottom: 2px solid #5f3e00;
+  }
+  .food-menu-nav .food-menu-nav-item.custom-temp-btn:first-of-type {
+      border-top: 2px solid #5f3e00;
+  }
+  .food-menu-grid .food-item-title h3, 
+  .food-menu-grid .food-price {
+      font-size: 1.1em;
+  }
+  .food-menu-grid .food-menu-description p {
+      font-size: 1.1em;
+  }
+  .food-menu-grid .menu-description p {
+      font-size: 1.1em;
+  }
+  .navbar-fixed-bottom.nav-v1 .bottom-list-item a {
+      font-family: 'Sulphur Point', sans-serif;
+      font-size: 13px;
+      padding: 15px 5px;
+      text-transform: uppercase;
+  }
+  .custom-about-us-v9-wrapper .about-us-v8-item-1 .about-us-v8-image {
+    display: none;
+  }
+  .custom-about-us-v9-wrapper .about-us-v8-item-1 .about-us-v8-content .text-wrapper {
+    padding-top: 0 !important;
+  }
+  .custom-about-us-v9-wrapper .about-us-v8-item-1 .text-wrapper .text-content  .text-holder ul li {
+    font-size: 1.1em;
+  }
+}
+
+@media (max-width:320px) {
+  .section-header,
+  .uk-overlay-panel h1,
+  .on-cover-content .section-wrapper .section-header,
+  .about-us-v8-content .text-wrapper h1,
+  .about-us-v7-content .text-wrapper h1,
+  .tmt-section h1,
+  .specials h1,
+  .events-container h1,
+  .custom-modal .newsletter-popup .section-header,
+  .about-us-s4-wrapper h1 {
+      font-size: 2.2em;
+  }
+  .about-us-v8-content h2,
+  .tmt-section h2,
+  .reviews-v2-wrapper h2,
+  .map-newsletter h2 {
+      font-size: 2.1em;
+  }
+  .uk-overlay-panel .slide-text {
+      font-size: 2.1em;
+  }
+  .banner-section h1 {
+      font-size: 0.9em;
+  }
+  p {
+      font-size: 1em;
+  }
+  .map-newsletter .sph-email-subscription h2 {
+      font-size: 1em;
+  }
+  .reviews-v2-wrapper .review-text p {
+      font-size: 1em;
+  }
+  .reviews-v2-wrapper h3 {
+      font-size: 1em;
+  }
+  .custom-modal .newsletter-popup .sph-email-subscription h2, 
+  .custom-modal .newsletter-popup .sph-email-subscription label h2 {
+      font-size: 1em;
+  }
+  .empty-content-message h2,
+  .empty-content-message h3,
+  .drink-menu .empty-content-message h2,
+  .drink-menu .empty-content-message h3,
+  .specials .empty-content-message h2,
+  .specials .empty-content-message h3,
+  .events-container .empty-content-message h2,
+  .events-container .empty-content-message h3 {
+      font-size: 1em;
+  }
+  .food-menu-grid .food-item-title h3, 
+  .food-menu-grid .food-price {
+      font-size: 1em;
+  }
+  .food-menu-grid .food-menu-description p {
+      font-size: 1em;
+  }
+  .food-menu-grid .menu-description p {
+      font-size: 1em;
+  }
+  .food-menu-grid .food-item-description {
+      font-size: 1em;
+  }
+}
