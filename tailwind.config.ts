@@ -1,52 +1,41 @@
 import type { Config } from "tailwindcss";
 
+// Palette is taken from the client's own stylesheet (italgardennola.com/css/custom.css).
+// See PALETTE.md for where each value comes from.
 const config: Config = {
-  content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./app/**/*.{js,ts,jsx,tsx,mdx}", "./components/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
       colors: {
-        "studio-black": "#090909",
-        charcoal: "#111111",
-        dark: "#1A1A1A",
-        card: "#1C1C1C",
-        border: "#2A2A2A",
-        gold: "#D4AF77",
-        "gold-light": "#E8C97A",
-        "gold-dark": "#B8935A",
-        cream: "#F5EDD8",
-        mist: "#A89880",
-        /* I-tal Garden accent layer — Rastafari/NOLA garden palette, used sparingly on top of the shared base */
-        palm: "#1F4D2E",
-        "palm-light": "#2E6B42",
-        turmeric: "#E2A33B",
-        pepper: "#B3452D",
-        clay: "#8C5A3C",
+        paper: "#f0efdd",
+        sand: "#e8e8d0",
+        ink: "#3f413e",
+        bark: "#653b00",
+        espresso: "#332927",
+        leaf: "#1e7741",
+        "leaf-deep": "#0b5226",
+        sun: "#f4be20",
+        sage: "#b1c89a",
+        // Derived, not on the client's site: errors and destructive actions only.
+        danger: "#9b2c1a",
       },
       fontFamily: {
-        display: ["Cormorant Garamond", "Georgia", "serif"],
-        body: ["DM Sans", "system-ui", "sans-serif"],
-        mono: ["DM Mono", "monospace"],
+        // Both are the client's own fonts (custom.css).
+        display: ['"Sulphur Point"', "ui-sans-serif", "system-ui", "sans-serif"],
+        body: ['"Sulphur Point"', "ui-sans-serif", "system-ui", "sans-serif"],
+        script: ['"Square Peg"', "cursive"],
       },
-      backgroundImage: {
-        "gold-gradient": "linear-gradient(135deg, #D4AF77 0%, #E8C97A 40%, #B8935A 100%)",
-        "garden-gradient": "linear-gradient(135deg, #1F4D2E 0%, #2E6B42 60%, #E2A33B 100%)",
-      },
-      animation: {
-        shimmer: "shimmer 2s linear infinite",
-        "fade-up": "fadeUp 0.8s ease forwards",
+      boxShadow: {
+        lift: "0 24px 48px -24px rgba(51, 41, 39, 0.35)",
+        soft: "0 8px 24px -12px rgba(51, 41, 39, 0.25)",
       },
       keyframes: {
-        shimmer: {
-          "0%": { backgroundPosition: "-200% 0" },
-          "100%": { backgroundPosition: "200% 0" },
-        },
-        fadeUp: {
-          from: { opacity: "0", transform: "translateY(16px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
-        },
+        marquee: { from: { transform: "translateX(0)" }, to: { transform: "translateX(-50%)" } },
+        bob: { "0%,100%": { transform: "translateY(0)" }, "50%": { transform: "translateY(-8px)" } },
+      },
+      animation: {
+        marquee: "marquee 48s linear infinite",
+        bob: "bob 7s ease-in-out infinite",
       },
     },
   },

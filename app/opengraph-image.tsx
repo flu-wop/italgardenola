@@ -15,26 +15,26 @@ export default function OpengraphImage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(135deg, #090909 0%, #111111 60%, #1F4D2E 100%)",
-          fontFamily: "Georgia, serif",
+          background: "#f0efdd",
+          fontFamily: "system-ui, sans-serif",
         }}
       >
         <div
           style={{
             fontSize: 92,
             fontWeight: 500,
-            color: "#F5EDD8",
+            color: "#332927",
             letterSpacing: "-2px",
             display: "flex",
           }}
         >
-          I-tal&nbsp;<span style={{ color: "#E2A33B" }}>Garden</span>
+          I-tal&nbsp;<span style={{ color: "#1e7741" }}>Garden</span>
         </div>
         <div
           style={{
             marginTop: 24,
             fontSize: 30,
-            color: "#A89880",
+            color: "#3f413e",
             fontFamily: "system-ui, sans-serif",
             display: "flex",
           }}

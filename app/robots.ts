@@ -1,12 +1,7 @@
 import type { MetadataRoute } from "next";
-import { SITE } from "@/lib/site-config";
 
+// Demo build: keep crawlers out entirely until the client signs off.
+// At launch: allow "/" and restore the sitemap line.
 export default function robots(): MetadataRoute.Robots {
-  return {
-    rules: {
-      userAgent: "*",
-      allow: "/",
-    },
-    sitemap: `https://${SITE.domain}/sitemap.xml`,
-  };
+  return { rules: { userAgent: "*", disallow: "/" } };
 }

@@ -36,3 +36,6 @@ export const addToCart = (item: MenuItem, sel: Selection, quantity = 1) => write
 export const setQuantity = (key: string, quantity: number) => writeCart(setLineQuantity(readCart(), key, quantity));
 export const removeFromCart = (key: string) => writeCart(setLineQuantity(readCart(), key, 0));
 export const clearCart = () => writeCart([]);
+
+export const OPEN_CART_EVENT = "ital-garden-open-cart";
+export const openCart = () => window.dispatchEvent(new Event(OPEN_CART_EVENT));

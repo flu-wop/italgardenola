@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import SmoothScroll from "@/components/motion/SmoothScroll";
 import { CONTACT, HOURS_SCHEMA, SITE } from "@/lib/site-config";
+import "@fontsource/sulphur-point/300.css";
+import "@fontsource/sulphur-point/400.css";
+import "@fontsource/sulphur-point/700.css";
+import "@fontsource/square-peg/400.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${SITE.domain}`),
-  robots: { index: false, follow: false }, // demo: remove at launch
+  robots: { index: false, follow: false }, // noindex until the client signs off
   title: {
     default: `${SITE.name} — ${SITE.tagline}`,
     template: `%s — ${SITE.name}`,
@@ -56,8 +61,9 @@ const restaurantJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="dark">
-      <body className="grain bg-studio-black text-cream antialiased">
+    <html lang="en">
+      <body className="grain bg-paper text-ink antialiased">
+        <SmoothScroll />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(restaurantJsonLd) }}

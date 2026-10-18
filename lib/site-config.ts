@@ -76,8 +76,8 @@ export const LINKS = {
 export const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/menu", label: "Menu" },
-  { href: "/events", label: "Events" },
   { href: "/catering", label: "Catering" },
+  { href: "/events", label: "Events" },
   { href: "/meal-prep", label: "Meal Prep" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },

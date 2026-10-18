@@ -18,12 +18,11 @@ export default async function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#F4F1E8",
+          background: "#f0efdd",
           borderRadius: "50%",
         }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={logoSrc} width={28} height={28} style={{ objectFit: "contain" }} />
+        <img alt="" src={logoSrc} width={28} height={28} style={{ objectFit: "contain" }} />
       </div>
     ),
     { ...size }

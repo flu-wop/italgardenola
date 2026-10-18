@@ -1,60 +1,63 @@
 import Link from "next/link";
 import Image from "next/image";
-import { CONTACT, HOURS_SUMMARY, NAV_LINKS, SOCIAL } from "@/lib/site-config";
+import { CONTACT, HOURS_SUMMARY, LINKS, NAV_LINKS, SOCIAL } from "@/lib/site-config";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border/60 bg-charcoal">
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-4">
+    <footer className="bg-espresso text-paper">
+      <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 md:grid-cols-4 md:px-6">
         <div>
-          <Image src="/images/logo.png" alt="I-tal Garden" width={58} height={80} className="h-16 w-auto" />
-          <p className="mt-3 max-w-xs font-body text-sm text-mist">
-            Plant-based soul food, cooked ital, served in New Orleans.
-          </p>
+          <Image src="/images/logo.png" alt="I-tal Garden" width={58} height={80} className="h-20 w-auto rounded-lg" />
+          <p className="mt-4 max-w-xs text-sm leading-relaxed text-paper/75">100% plant-based meals made with wholesome ingredients, bold seasonings, and soulful tradition.</p>
         </div>
 
         <div>
-          <p className="mb-4 font-mono text-xs uppercase tracking-widest text-turmeric">Visit</p>
-          <address className="not-italic font-body text-sm leading-relaxed text-cream/80">
+          <p className="eyebrow mb-4 !text-sun">Visit</p>
+          <address className="text-sm not-italic leading-relaxed text-paper/85">
             {CONTACT.addressLine1}
             <br />
             {CONTACT.addressLine2}
             <br />
-            <a href={CONTACT.phoneHref} className="hover:text-gold">
+            <a href={CONTACT.phoneHref} className="underline-offset-4 hover:underline">
               {CONTACT.phone}
             </a>
           </address>
-          <p className="mt-3 font-body text-sm text-cream/80">{HOURS_SUMMARY}</p>
+          <p className="mt-3 text-sm text-paper/85">{HOURS_SUMMARY}</p>
         </div>
 
         <div>
-          <p className="mb-4 font-mono text-xs uppercase tracking-widest text-turmeric">Menu</p>
-          <ul className="space-y-2 font-body text-sm text-cream/80">
+          <p className="eyebrow mb-4 !text-sun">Explore</p>
+          <ul className="space-y-2 text-sm text-paper/85">
             {NAV_LINKS.filter((l) => l.href !== "/").map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="hover:text-gold">
+                <Link href={link.href} className="underline-offset-4 hover:underline">
                   {link.label}
                 </Link>
               </li>
             ))}
+            <li>
+              <a href={LINKS.giftCards} target="_blank" rel="noopener noreferrer" className="underline-offset-4 hover:underline">
+                Gift Cards
+              </a>
+            </li>
           </ul>
         </div>
 
         <div>
-          <p className="mb-4 font-mono text-xs uppercase tracking-widest text-turmeric">Follow</p>
-          <ul className="space-y-2 font-body text-sm text-cream/80">
+          <p className="eyebrow mb-4 !text-sun">Follow</p>
+          <ul className="space-y-2 text-sm text-paper/85">
             <li>
-              <a href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-gold">
+              <a href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer" className="underline-offset-4 hover:underline">
                 Instagram — {SOCIAL.instagramHandle}
               </a>
             </li>
             <li>
-              <a href={SOCIAL.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-gold">
+              <a href={SOCIAL.facebook} target="_blank" rel="noopener noreferrer" className="underline-offset-4 hover:underline">
                 Facebook
               </a>
             </li>
             <li>
-              <a href={`mailto:${CONTACT.email}`} className="hover:text-gold">
+              <a href={`mailto:${CONTACT.email}`} className="break-all underline-offset-4 hover:underline">
                 {CONTACT.email}
               </a>
             </li>
@@ -62,16 +65,10 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-border/60 px-6 py-6">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 text-center md:flex-row md:text-left">
-          <p className="font-mono text-xs italic text-mist">Ital is vital — fresh, organic, and made to nourish.</p>
-          <p className="font-mono text-xs text-mist">
-            © {new Date().getFullYear()} I-tal Garden. All rights reserved.
-          </p>
-          <p className="font-mono text-xs text-mist">
-            Designed by{" "}
-            <a href="https://in-flu-ential.vercel.app" target="_blank" rel="noopener noreferrer" className="text-gold transition hover:opacity-80">IN-FLU-ENTIAL</a>
-          </p>
+      <div className="border-t border-paper/15 px-5 py-6 md:px-6">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 text-center text-xs text-paper/70 md:flex-row md:text-left">
+          <p>© {new Date().getFullYear()} I-tal Garden. All rights reserved.</p>
+          <p>Designed by IN-FLU-ENTIAL</p>
         </div>
       </div>
     </footer>

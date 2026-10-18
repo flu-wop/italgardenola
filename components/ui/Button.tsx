@@ -1,34 +1,34 @@
 import Link from "next/link";
 import { ReactNode } from "react";
+import { cn } from "@/lib/cn";
 
 type ButtonProps = {
   href: string;
   children: ReactNode;
-  variant?: "default" | "outline" | "ghost";
+  variant?: "default" | "outline" | "ghost" | "light";
   external?: boolean;
   className?: string;
 };
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-body text-sm font-medium tracking-wide transition-all duration-300";
+  "inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-body text-[15px] font-bold tracking-wide transition-colors duration-300";
 
-const variants = {
-  default: "bg-gold-gradient text-studio-black hover:brightness-110 hover:-translate-y-0.5 shadow-lg shadow-gold/10",
-  outline: "border border-gold/40 text-cream hover:border-gold hover:bg-gold/10",
-  ghost: "text-cream hover:text-gold",
+export const buttonVariants = {
+  default: "bg-leaf-deep text-white shadow-soft hover:bg-leaf",
+  light: "bg-paper text-espresso shadow-soft hover:bg-white",
+  outline: "border-2 border-espresso/25 text-espresso hover:border-leaf-deep hover:text-leaf-deep",
+  ghost: "text-espresso hover:text-leaf",
 };
 
 export function Button({ href, children, variant = "default", external, className = "" }: ButtonProps) {
-  const classes = `${base} ${variants[variant]} ${className}`;
-
-  if (external) {
+  const classes = cn(base, buttonVariants[variant], className);
+  if (external || href.startsWith("tel:") || href.startsWith("mailto:")) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={classes}>
+      <a href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={classes}>
         {children}
       </a>
     );
   }
-
   return (
     <Link href={href} className={classes}>
       {children}

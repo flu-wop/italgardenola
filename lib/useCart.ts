@@ -1,25 +1,41 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
-import { CART_EVENT, CartLine, getCart } from "@/lib/cart";
+import { useMemo, useSyncExternalStore } from "react";
+import { CART_EVENT, CART_STORAGE_KEY, type CartLine } from "@/lib/cart";
 
-/** Reactive read of the cart, kept in sync across components/tabs. No Context needed — every caller just listens for the same event. */
+function subscribe(cb: () => void) {
+  window.addEventListener(CART_EVENT, cb);
+  window.addEventListener("storage", cb);
+  return () => {
+    window.removeEventListener(CART_EVENT, cb);
+    window.removeEventListener("storage", cb);
+  };
+}
+
+// The raw string is a stable snapshot; parsing happens in useMemo below.
+const snapshot = () => {
+  try {
+    return window.localStorage.getItem(CART_STORAGE_KEY) ?? "[]";
+  } catch {
+    return "[]";
+  }
+};
+
+/** Reactive read of the cart, in sync across components and tabs. `ready` is false during SSR/hydration. */
 export function useCart() {
-  const [cart, setCart] = useState<CartLine[]>([]);
-  const [ready, setReady] = useState(false);
-
-  const sync = useCallback(() => setCart(getCart()), []);
-
-  useEffect(() => {
-    sync();
-    setReady(true);
-    window.addEventListener(CART_EVENT, sync);
-    window.addEventListener("storage", sync);
-    return () => {
-      window.removeEventListener(CART_EVENT, sync);
-      window.removeEventListener("storage", sync);
-    };
-  }, [sync]);
-
+  const raw = useSyncExternalStore(subscribe, snapshot, () => "[]");
+  const ready = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
+  const cart = useMemo<CartLine[]>(() => {
+    try {
+      const parsed = JSON.parse(raw);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch {
+      return [];
+    }
+  }, [raw]);
   return { cart, ready };
 }

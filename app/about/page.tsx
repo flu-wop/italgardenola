@@ -1,85 +1,64 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Eyebrow, Section, SectionHeading } from "@/components/ui/Section";
-import { PhotoSlot } from "@/components/ui/PhotoSlot";
+import { Eyebrow, Section } from "@/components/ui/Section";
+import { Headline, Reveal } from "@/components/motion/motion";
 import { Button } from "@/components/ui/Button";
 import { LINKS, SITE } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "About",
-  description:
-    "The story behind I-tal Garden: Chef Ra's family-owned, fully plant-based take on New Orleans soul food, rooted in the ital philosophy of eating close to the earth.",
+  description: "I-tal Garden is a plant-based food company offering healthy alternatives to traditional New Orleans style soul cuisine. Family owned and operated.",
   alternates: { canonical: "/about" },
   openGraph: { title: `About — ${SITE.name}`, url: "/about" },
 };
 
+// Copy below is the client's own, from italgardennola.com (About).
+// CONFIRM: any chef bio / founding story should come from the client directly.
 export default function AboutPage() {
   return (
     <>
-      {/*
-        TODO(James): this page runs on the philosophy/mission language we could
-        confirm publicly. Chef Ra's personal bio (background, how the
-        restaurant started, family details) should come straight from him —
-        swap in real specifics here rather than leaving it general.
-      */}
-      <Section className="pb-10 pt-16 md:pt-20">
+      <Section className="pb-10 pt-14 md:pt-20">
         <div className="grid items-center gap-12 md:grid-cols-2">
           <div>
-            <Eyebrow>Our Story</Eyebrow>
-            <SectionHeading>
-              Cooking is Chef Ra&rsquo;s <span className="italic text-gold">ministry</span>.
-            </SectionHeading>
-            <p className="mt-6 max-w-md font-body text-base leading-relaxed text-mist">
-              I-tal Garden is family-owned and operated, built on a simple belief: plant-based food can hold
-              every bit of the flavor and history that New Orleans soul food is known for.
+            <Eyebrow>About</Eyebrow>
+            <Headline as="h1" immediate text="Plant-based, *family owned.*" className="text-5xl font-bold leading-[1.02] text-espresso md:text-7xl" />
+            <p className="mt-6 max-w-md text-lg leading-relaxed text-ink/85">
+              I-Tal Garden is a plant-based food company that provides healthy alternatives to traditional New Orleans style soul cuisine. Family owned and operated, our mission is to provide flavorful but balanced organic offerings that appeal to a wide range of palates.
             </p>
           </div>
-          <PhotoSlot label="Chef Ra portrait" aspect="aspect-[4/5]" />
+          <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] shadow-lift">
+            <Image src="/images/about/decor.jpg" alt="Decor inside I-tal Garden" fill priority sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
+          </div>
         </div>
       </Section>
 
-      <Section className="border-y border-border/60 bg-charcoal/60">
+      <Section className="bg-sand">
         <div className="mx-auto max-w-2xl text-center">
-          <Eyebrow>The Philosophy</Eyebrow>
-          <SectionHeading>
-            Eating <span className="italic text-turmeric">ital</span>
-          </SectionHeading>
-          <p className="mt-6 font-body text-base leading-relaxed text-mist">
-            &ldquo;Ital&rdquo; — rooted in the Rastafari tradition, from &ldquo;vital&rdquo; — means food kept close to
-            its natural state: organic, minimally processed, prepared with intention. At I-tal Garden, that
-            philosophy meets Creole technique. Ancient ingredients, slow method, balanced plates — flavorful
-            first, so that healthy never feels like a compromise.
-          </p>
+          <Eyebrow>The philosophy</Eyebrow>
+          <Headline text="Eating *I-tal*" className="text-4xl font-bold text-espresso md:text-6xl" />
+          <Reveal>
+            <p className="mt-6 text-lg leading-relaxed text-ink/85">
+              Derived from a well known term used in the Caribbean for healthy vegetarian food, the root word &ldquo;vital&rdquo;, which means important, essential, absolutely necessary for life, highlights our goal to create satisfying dishes that incorporate carefully selected ingredients that heal.
+            </p>
+            <p className="mt-4 text-lg leading-relaxed text-ink/85">I-Tal debunks the myth that healthy vegetarian, vegan, gluten-free and other plant-based food cannot also be delicious.</p>
+          </Reveal>
         </div>
       </Section>
 
       <Section>
         <div className="grid items-center gap-12 md:grid-cols-2">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border">
-            <Image
-              src="/images/about/decor.jpg"
-              alt="Inside I-tal Garden"
-              fill
-              sizes="(min-width: 768px) 50vw, 100vw"
-              className="object-cover"
-            />
+          <div className="relative aspect-[3/2] overflow-hidden rounded-[2rem] shadow-lift">
+            <Image src="/images/about/interior-3.jpg" alt="Inside I-tal Garden" fill loading="lazy" sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
           </div>
           <div>
-            <Eyebrow>New Orleans, Through and Through</Eyebrow>
-            <SectionHeading>
-              Soul food didn&rsquo;t need <span className="italic text-gold">meat</span> to be soul.
-            </SectionHeading>
-            <p className="mt-6 font-body text-base leading-relaxed text-mist">
-              Jackfruit stands in for pulled pork. Hearts of palm become crab cakes. Coconut milk carries a
-              gumbo base. Every substitution on this menu is a technique, not a shortcut — built so the dish
-              tastes like the New Orleans original, not an apology for it.
-            </p>
+            <Eyebrow>Come hungry</Eyebrow>
+            <Headline text="Order on *Toast.*" className="text-4xl font-bold text-espresso md:text-5xl" />
             <div className="mt-8 flex flex-wrap gap-4">
-              <Button href="/menu" variant="outline">
-                See the Menu
-              </Button>
               <Button href={LINKS.order} external>
                 Order Online
+              </Button>
+              <Button href="/menu" variant="outline">
+                View menu
               </Button>
             </div>
           </div>
