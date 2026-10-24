@@ -27,7 +27,7 @@ export function Navbar() {
     <header className={cn("sticky top-0 z-50 transition-colors duration-300", scrolled || open ? "bg-paper/95 shadow-soft backdrop-blur-md" : "bg-paper/70 backdrop-blur-sm")}>
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3 md:px-6">
         <Link href="/" className="flex items-center gap-3" aria-label="I-tal Garden home">
-          <Image src="/images/logo.png" alt="" width={640} height={857} className="h-12 w-auto rounded-md" priority />
+          <Image src="/images/logo-cutout.png" alt="" width={640} height={908} className="h-12 w-auto" priority />
           <span className="hidden font-display text-xl font-bold tracking-wide text-espresso sm:inline">I-tal Garden</span>
         </Link>
 
