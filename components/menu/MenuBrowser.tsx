@@ -80,7 +80,7 @@ export function MenuBrowser({ menu }: { menu: "daily" | "catering" }) {
 
   return (
     <>
-      <div className="sticky top-[67px] z-30 border-b border-espresso/10 bg-paper/95 backdrop-blur-md">
+      <div className="sticky top-[72px] z-30 border-b border-espresso/10 bg-paper/95 backdrop-blur-md">
         <div className="mx-auto max-w-6xl px-5 py-3 md:px-6">
           <nav aria-label="Menu categories" className="no-scrollbar -mx-5 flex gap-2 overflow-x-auto px-5 md:mx-0 md:px-0">
             {sections.map((s) => (

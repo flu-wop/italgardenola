@@ -7,7 +7,7 @@ export function Footer() {
     <footer className="bg-espresso text-paper">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 md:grid-cols-4 md:px-6">
         <div>
-          <Image src="/images/logo.png" alt="I-tal Garden" width={58} height={80} className="h-20 w-auto rounded-lg" />
+          <Image src="/images/logo.png" alt="I-tal Garden" width={640} height={857} className="h-28 w-auto rounded-xl" />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-paper/75">100% plant-based meals made with wholesome ingredients, bold seasonings, and soulful tradition.</p>
         </div>
 
